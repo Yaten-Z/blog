@@ -6,13 +6,13 @@ const SITE_LANG = "zh_CN";
 
 export const siteConfig: SiteConfig = {
 	// 站点标题
-	title: "纸上烟霞",
+	title: "Yaten's Blog",
 
 	// 站点副标题
 	subtitle: "",
 
 	// 站点 URL
-	site_url: "https://blog.yatrn.top",
+	site_url: "https://blog.yaten.top",
 
 	// 站点描述
 	description:
@@ -20,7 +20,6 @@ export const siteConfig: SiteConfig = {
 
 	// 站点关键词
 	keywords: [
-		"纸上烟霞",
 		"博客",
 		"技术博客",
 		"静态博客",
@@ -78,11 +77,11 @@ export const siteConfig: SiteConfig = {
 		// 4. 网络图片: { type: "url", value: "https://example.com/logo.png", alt: "Logo" }
 		logo: {
 			type: "url",
-			value: "https://s1.imagehub.cc/images/2026/07/13/be849cf2b797be9b4e8562b752b25b48.png",
-			alt: "Logo",
+			value: "https://s1.imagehub.cc/images/2026/07/31/88f9d434009eda584166ead12a405c39.png",
+			alt: "logo",
 		},
 		// 导航栏标题
-		title: "纸上烟霞",
+		title: "Yaten's Blog",
 		// 全宽导航栏，导航栏是否占满屏幕宽度
 		widthFull: false,
 		// 导航菜单对齐方式，left：左对齐，center：居中

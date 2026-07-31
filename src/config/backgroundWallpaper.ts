@@ -2,7 +2,7 @@ import type { BackgroundWallpaperConfig } from "@/types/backgroundWallpaper";
 
 export const backgroundWallpaper: BackgroundWallpaperConfig = {
 	// 壁纸模式："banner" 横幅壁纸，"fullscreen" 全屏壁纸，"overlay" 全屏透明，"none" 纯色背景无壁纸
-	mode: "banner",
+	mode: "none",
 	// 是否允许用户通过导航栏切换壁纸模式
 	// 且同时维护多种壁纸模式过于复杂（已经屎山代码），在切换时有时候可能会出现一些奇怪的过渡效果或者bug
 	// 推荐只选择自己喜欢的模式并关闭切换功能
@@ -43,20 +43,36 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 		// 桌面背景图片（支持单张或多张随机）
 		// desktop: "assets/images/DesktopWallpaper/d1.avif",
 		desktop: [
-			"https://s1.imagehub.cc/images/2026/07/13/722bfd181ebf4ce6514d382d958e9146.webp",
-			"https://s1.imagehub.cc/images/2026/07/13/b85acdbe0626ad39baa6e350e3f4c51e.webp",
-			"https://s1.imagehub.cc/images/2026/07/13/5e87846cbce140bb8fc3a438d854ae13.webp",
-			"https://s1.imagehub.cc/images/2026/07/13/8f51f9298b1813e0d882892993735496.webp",
-			"https://s1.imagehub.cc/images/2026/07/13/f7976c936b7f218639cde4e85c4026cf.webp",
+			"https://s1.imagehub.cc/images/2026/07/26/95b32aaa01b0476cbbd88b02b5357d08.jpg",
+			"https://s1.imagehub.cc/images/2026/07/26/ea0052474e283ba8f3759b0e10230d1d.png",
+			"https://s1.imagehub.cc/images/2026/07/26/3bc1e5b6c627ea8a3ea9533fc4cc1166.png",
+			"https://s1.imagehub.cc/images/2026/07/26/0216e94cb00182bfdf0f480bfe9fac94.png",
+			"https://s1.imagehub.cc/images/2026/07/26/5b00863fdc08ae62cecbbc00f0095440.png",
+			"https://s1.imagehub.cc/images/2026/07/26/621fae1c168ed162b94e7b8e267c3d54.png",
+			"https://s1.imagehub.cc/images/2026/07/26/23b60d17bb762c8500516653d5e073c0.png",
+			"https://s1.imagehub.cc/images/2026/07/26/d512aa634455a69574a125586e41b80d.png",
+			"https://s1.imagehub.cc/images/2026/07/26/c24d8ca3cd0ea98e54958c9f8a1a9de4.png",
+			"https://s1.imagehub.cc/images/2026/07/26/ab0f84dd250559480772d629f909d9c7.png",
+			"https://s1.imagehub.cc/images/2026/07/26/ef8fb26c4b3c61076c8a0b99ae5323c8.png",
+			"https://s1.imagehub.cc/images/2026/07/26/d002247dd70484f645a9b2577eaae118.png",
+			"https://s1.imagehub.cc/images/2026/07/26/d15beb1af96e4888b43feb178972dd26.png",
 		],
 		// 移动背景图片（支持单张或多张随机）
 		// mobile: "assets/images/MobileWallpaper/m1.avif",
 		mobile: [
-			"https://s1.imagehub.cc/images/2026/07/13/722bfd181ebf4ce6514d382d958e9146.webp",
-			"https://s1.imagehub.cc/images/2026/07/13/b85acdbe0626ad39baa6e350e3f4c51e.webp",
-			"https://s1.imagehub.cc/images/2026/07/13/5e87846cbce140bb8fc3a438d854ae13.webp",
-			"https://s1.imagehub.cc/images/2026/07/13/8f51f9298b1813e0d882892993735496.webp",
-			"https://s1.imagehub.cc/images/2026/07/13/f7976c936b7f218639cde4e85c4026cf.webp",
+			"https://s1.imagehub.cc/images/2026/07/26/95b32aaa01b0476cbbd88b02b5357d08.jpg",
+			"https://s1.imagehub.cc/images/2026/07/26/ea0052474e283ba8f3759b0e10230d1d.png",
+			"https://s1.imagehub.cc/images/2026/07/26/3bc1e5b6c627ea8a3ea9533fc4cc1166.png",
+			"https://s1.imagehub.cc/images/2026/07/26/0216e94cb00182bfdf0f480bfe9fac94.png",
+			"https://s1.imagehub.cc/images/2026/07/26/5b00863fdc08ae62cecbbc00f0095440.png",
+			"https://s1.imagehub.cc/images/2026/07/26/621fae1c168ed162b94e7b8e267c3d54.png",
+			"https://s1.imagehub.cc/images/2026/07/26/23b60d17bb762c8500516653d5e073c0.png",
+			"https://s1.imagehub.cc/images/2026/07/26/d512aa634455a69574a125586e41b80d.png",
+			"https://s1.imagehub.cc/images/2026/07/26/c24d8ca3cd0ea98e54958c9f8a1a9de4.png",
+			"https://s1.imagehub.cc/images/2026/07/26/ab0f84dd250559480772d629f909d9c7.png",
+			"https://s1.imagehub.cc/images/2026/07/26/ef8fb26c4b3c61076c8a0b99ae5323c8.png",
+			"https://s1.imagehub.cc/images/2026/07/26/d002247dd70484f645a9b2577eaae118.png",
+			"https://s1.imagehub.cc/images/2026/07/26/d15beb1af96e4888b43feb178972dd26.png",
 		],
 		// 背景视频播放地址
 		// 支持单个视频路径（字符串）或多个视频循环（数组）
@@ -79,15 +95,11 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			// 是否允许用户通过控制面板切换横幅标题显示
 			switchable: true,
 			// 主页横幅主标题
-			title: "纸上烟霞",
+			title: "Yaten's Blog",
 			// 主页横幅主标题字体大小
 			titleSize: "3.8rem",
 			// 主页横幅副标题
 			subtitle: [
-				"纸上没有重峦叠嶂，却有万里烟霞",
-				"人生最难得的，是把经年的故事，写成纸上烟霞",
-				"那些大喜大悲，终究化作云淡风轻；那些辗转难眠，终成一笔拂晓的微光",
-				"我在这里，以字为舟，以墨为楫，渡一程人间烟火，访一片心底桃源"
 			],
 			// 主页横幅副标题字体大小
 			subtitleSize: "1.5rem",
@@ -95,7 +107,7 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 				// 是否启用打字机效果
 				// 打字机开启 → 循环显示所有副标题
 				// 打字机关闭 → 每次刷新随机显示一条副标题
-				enable: true,
+				enable: false,
 				// 打字速度（毫秒）
 				speed: 100,
 				// 删除速度（毫秒）

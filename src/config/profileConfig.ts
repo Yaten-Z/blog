@@ -9,10 +9,10 @@ export const profileConfig: ProfileConfig = {
 	avatar: "https://s1.imagehub.cc/images/2025/07/30/93b3e11a33c2741a3e254bccabb47739.jpg",
 
 	// 名字
-	name: "风与路人",
+	name: "Yaten",
 
 	// 个人签名
-	bio: "纸上烟霞，风与路人。",
+	bio: "自己的热情终究烫伤了自己",
 
 	// 链接配置
 	// 已经预装的图标集：fa7-brands，fa7-regular，fa7-solid，material-symbols，simple-icons
