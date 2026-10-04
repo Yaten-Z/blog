@@ -30,6 +30,11 @@ let title = Astro.props.title ? `${Astro.props.title} - ${site.title}` : site.ti
   <link rel="canonical" href={canonicalURL}>
   <link rel="alternate" type="application/rss+xml" title={site.title} href={getUrl('/rss.xml')}>
 
+  <!-- Chinese font: 思源宋体 (Noto Serif SC / Source Han Serif), subsetted via jsDelivr -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@5.3.0/400.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@5.3.0/700.css">
+
   <!-- Primary Meta Tags -->
   <meta name="title" content={title}>
   <meta name="description" content={description}>

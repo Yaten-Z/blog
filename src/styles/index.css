@@ -67,6 +67,13 @@
   src: url('./JetBrainsMono-Regular.ttf');
 }
 
+/* Site font stack: English -> JetBrains Mono, Chinese -> 思源宋体 (Noto Serif SC).
+   Latin glyphs resolve to JetBrains Mono; CJK glyphs (absent there) fall
+   through to the serif Chinese fonts. */
+:root {
+  --font-site: "jetbrains-mono", "Noto Serif SC", "Source Han Serif SC", "Source Han Serif CN", "Songti SC", "STSong", serif;
+}
+
 /**
 覆写tailwindcss 默认样式
  */
@@ -78,6 +85,7 @@ html {
 
 body {
   min-height: 100%;
+  font-family: var(--font-site);
 }
 
 ol,
