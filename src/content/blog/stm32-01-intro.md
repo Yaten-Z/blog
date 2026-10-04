@@ -48,15 +48,7 @@ mermaid: true
 
 以本系列使用的型号为例：**STM32F103C8T6**。
 
-```mermaid
-flowchart LR
-    A["STM32"] --> B["F 基础型"]
-    B --> C["103 子系列<br/>Cortex-M3 增强型"]
-    C --> D["C 引脚数 48"]
-    D --> E["8 Flash 64KB"]
-    E --> F["T 封装 LQFP"]
-    F --> G["6 温度 -40~85℃"]
-```
+![图片1](https://s1.imagehub.cc/images/2026/10/04/af0b12ce6fc41b43d96523658743d031.png)
 
 - **STM32**：ST 的 32 位 MCU 家族
 - **F**：产品类别，F=基础型（Foundation）；还有 L 低功耗、H 高性能、G 通用、W 无线等
@@ -72,27 +64,7 @@ flowchart LR
 
 本系列选用市面上最常见的 **STM32F103C8T6 最小系统板**，因外形是蓝色小板子，江湖人称 **“蓝丸”（Blue Pill）**。它的核心资源：
 
-```mermaid
-flowchart TB
-    subgraph Core["Cortex-M3 内核 @ 最高 72MHz"]
-        CPU["CPU"]
-        NVIC["NVIC 中断控制器"]
-        ST["SysTick 系统定时器"]
-    end
-    subgraph Mem["存储器"]
-        Flash["64KB Flash"]
-        SRAM["20KB SRAM"]
-    end
-    subgraph Periph["常用外设"]
-        GPIO["GPIO 通用输入输出"]
-        USART["3× USART 串口"]
-        TIM["多个 TIM 定时器 / PWM"]
-        ADC["2× 12位 ADC"]
-        IICSPI["2× I2C + 2× SPI"]
-    end
-    Core <-->|AHB / APB 总线| Mem
-    Core <-->|APB| Periph
-```
+![5279536835 955195790](https://s1.imagehub.cc/images/2026/10/04/db6fae88e48cc6dedeaa16fb5198770d.jpg)
 
 主要参数一览：
 
@@ -113,7 +85,15 @@ flowchart TB
 2. **标准库（StdPeriph）**：ST 早期提供的函数库，对寄存器做了封装，曾经非常流行，但已停止更新。
 3. **HAL 库（Hardware Abstraction Layer）**：ST 目前主推的库，跨系列可移植性好，配合 **STM32CubeMX** 图形化配置，能一键生成初始化代码，非常适合入门。
 
-本系列采用 **STM32CubeIDE + STM32CubeMX + HAL 库**：前者是免费的集成开发环境（编译、下载、调试），后者是图形化配置工具，二者现已整合在 CubeIDE 内。等基础打牢后，第 13 篇会带你了解如何过渡到 LL 库和寄存器。
+本系列的工具链是 **STM32CubeMX + Keil MDK-ARM + VSCode**，底层使用 **HAL 库**：
+
+| 环节 | 工具 | 作用 |
+| --- | --- | --- |
+| 图形化配置 | STM32CubeMX | 配置时钟树与外设，一键生成 HAL 初始化代码和 Keil 工程骨架 |
+| 编译 / 下载 / 调试 | Keil MDK-ARM（µVision） | 编译工程，配合 ST-Link 烧录程序并在线调试 |
+| 编写代码 | VSCode | 配合 C/C++ 插件舒适地编写、阅读代码 |
+
+这种“生成骨架 → 编译下载 → 专注编码”的分工，既保留了 CubeMX 的图形化便利，又能用自己顺手的编辑器。等基础打牢后，第 13 篇会带你了解如何过渡到 LL 库和寄存器。
 
 ## 六、需要准备的东西
 
@@ -126,8 +106,10 @@ flowchart TB
 
 **软件**
 
-- [STM32CubeIDE](https://www.st.com/en/development-tools/stm32cubeide.html)（含 CubeMX，免费，注册 ST 账号即可下载）
-- ST-Link 驱动（安装 CubeIDE 时通常会一并安装）
+- [STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html)（免费，注册 ST 账号即可下载，负责生成初始化代码）
+- [Keil MDK-ARM](https://www.keil.arm.com/)（安装时勾选 STM32F1xx Device Family Pack；免费版 MDK-Lite 有 32KB 代码上限，入门够用）
+- [VSCode](https://code.visualstudio.com/) + 插件：C/C++；可选装 Keil Assistant 或 Cortex-Debug 辅助编辑与调试
+- ST-Link 驱动（安装 STM32CubeProgrammer 或 ST-Link Utility 时通常会一并安装，也可单独下载）
 
 **心态**
 
@@ -140,7 +122,7 @@ flowchart TB
 - 单片机是“芯片里的电脑”，STM32 是其中的 32 位代表
 - STM32 相比 51：更快、外设更多、开发方式更现代
 - `STM32F103C8T6` 各字段的含义
-- 蓝丸的核心资源与本系列的开发方式（CubeIDE + HAL）
+- 蓝丸的核心资源与本系列的开发方式（CubeMX + Keil + VSCode + HAL）
 
 **动手练习**
 
@@ -181,7 +163,7 @@ int main(void)
 ## 系列目录（持续更新）
 
 - 01 认识 STM32（本篇）
-- 02 环境搭建与第一个工程
+- 02 第一个工程：点亮 LED
 - 03 工程解剖：目录、启动流程与时钟树
 - 04 GPIO 输入输出
 - 05 中断与 EXTI
@@ -194,4 +176,4 @@ int main(void)
 - 12 综合实战：环境监测小站
 - 13 调试技巧与进阶路线
 
-下一篇，我们安装 STM32CubeIDE、新建第一个工程，并用 ST-Link 点亮板载 LED。
+下一篇，我们直接用 STM32CubeMX 新建第一个工程，写几行 HAL 代码点亮板载与外接 LED，并用 ST-Link 烧录。
