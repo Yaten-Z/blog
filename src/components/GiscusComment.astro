@@ -6,6 +6,15 @@
 <script>
   import { comment } from "../consts";
 
+  const GISCUS_LIGHT_THEME = "noborder_light";
+  const GISCUS_DARK_THEME = "noborder_gray";
+
+  function getGiscusTheme() {
+    return document.documentElement.getAttribute("data-theme") === "dark"
+      ? GISCUS_DARK_THEME
+      : GISCUS_LIGHT_THEME;
+  }
+
   function loadGiscus() {
     const container = document.querySelector(".giscus");
     if (!comment.enable || comment.type !== "giscus" || !container) return;
@@ -19,8 +28,25 @@
     for (const [key, value] of Object.entries(comment.giscusConfig)) {
       if (value !== null && value !== "") script.setAttribute(key, value);
     }
+    // Override the configured theme with the one matching the current color scheme.
+    script.setAttribute("data-theme", getGiscusTheme());
     container.appendChild(script);
   }
 
+  function updateGiscusTheme() {
+    const iframe = document.querySelector<HTMLIFrameElement>("iframe.giscus-frame");
+    if (!iframe || !iframe.contentWindow) return;
+    iframe.contentWindow.postMessage(
+      { giscus: { setConfig: { theme: getGiscusTheme() } } },
+      "https://giscus.app"
+    );
+  }
+
   document.addEventListener("astro:page-load", loadGiscus);
+
+  // Keep Giscus in sync when the site's light/dark toggle changes data-theme.
+  new MutationObserver(updateGiscusTheme).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-theme"],
+  });
 </script>

@@ -24,7 +24,7 @@ const {frontmatter = {comment: false, donate: false}} = Astro.props
 
 <body class="bg-skin-secondary relative flex flex-col min-h-screen">
 <Header/>
-<main class="container p-4 text-skin-base pb-32 relative flex-1" id="app">
+<main class="container p-4 text-skin-base relative flex-1" id="app">
   <div class="grid grid-cols-4 gap-8">
     <div class="col-span-4 xl:col-span-3">
       <slot></slot>
@@ -44,8 +44,8 @@ const {frontmatter = {comment: false, donate: false}} = Astro.props
       </div>
     </div>
   </div>
-  <Footer/>
 </main>
+<Footer/>
 </body>
 <script>
   document.body.querySelectorAll("a").forEach((item: HTMLAnchorElement) => {

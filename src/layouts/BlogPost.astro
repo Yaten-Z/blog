@@ -6,6 +6,7 @@ import Footer from '@/components/Footer.astro';
 import Profile from '@/components/Profile.astro';
 import Comment from '@/components/Comment.astro';
 import Toc from '@/components/Toc.astro';
+import BlogAside from '@/components/BlogAside.astro';
 import { comment, config } from '@/consts';
 import ScrollToTop from '@/components/ScrollToTop.astro';
 import { t } from '@/i18n/utils';
@@ -49,7 +50,7 @@ const {
   <body class="bg-skin-secondary flex flex-col min-h-screen">
     <Header />
     <main
-      class="container relative p-4 pb-32 text-skin-base flex-1"
+      class="container relative p-4 text-skin-base flex-1"
       id="app"
     >
       <div class="grid grid-cols-4 gap-8">
@@ -68,11 +69,12 @@ const {
         <div class="relative hidden col-span-1 xl:block">
           <Profile />
           {frontmatter.toc && <Toc headings={headings} />}
+          <div class="mt-6 space-y-6"><BlogAside /></div>
         </div>
         <ScrollToTop />
       </div>
-      <Footer />
     </main>
+    <Footer />
   </body>
 </html>
 

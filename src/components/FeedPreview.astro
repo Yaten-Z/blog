@@ -1,21 +1,34 @@
 ---
 import FeedPostDate from "./FeedPostDate.astro";
+import getUrl from "@/utils/getUrl";
 const {data, body, id} = Astro.props.post;
 const {index} = Astro.props;
-import {t} from '@/i18n/utils'
-import getUrl from "@/utils/getUrl";
+
+const title =
+  body
+    .split("\n")
+    .map((line) =>
+      line
+        .replace(/^#+\s?/, "")
+        .replace(/!?\[.*?\]\(.*?\)/g, "")
+        .replace(/\\\s*$/, "")
+        .trim()
+    )
+    .find((line) => line.length > 0) ?? "";
 ---
 
-<div class="mt-2 mb-4">
-  <p
-    class="break-all first-letter tracking-wide first-letter:font-semibold first-letter:text-2xl line-clamp-2"
-  >
-    {
-      body.replace(/^#+/gm, "").replace(/!?\[.*?\]\(.*?\)/g, "")
-    }
-  </p>
-  <p class="flex items-center justify-between text-sm">
-    <FeedPostDate date={data.date} index={index}/>
-    <a class="hover:text-skin-active text-sm border rounded py-1 px-2" href={getUrl("/feed/") + id}>{t('home.readMore')}</a>
-  </p>
+<div class="my-5 first:mt-0">
+  <div class="text-skin-base">
+    <a
+      class="flex text-xl underline-offset-4 cursor-pointer decoration-skin-base decoration-wavy hover:underline font-bold break-all"
+      href={getUrl("/feed/") + id}
+    >
+      {title}
+    </a>
+
+    <div class="flex flex-wrap items-center my-2 text-skin-dodge">
+      <FeedPostDate date={data.date} index={index} />
+    </div>
+  </div>
 </div>
+<div class="divider-horizontal-mini"></div>

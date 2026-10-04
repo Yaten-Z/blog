@@ -23,12 +23,12 @@ import type {AnalyticsConfig} from "./types/analyticsTypes"
  *    All tags will be displayed in single page "/tags".
  */
 export const site = {
-  title: 'Astro Theme Yi', // required
+  title: 'Yaten\'s Blog', // required
   favicon: '/favicon.svg', // required
   description: 'Welcome to my independent blog website! ',
-  author: "Astro-Yi", // required
-  avatar: '/avatar.png', // required
-  url: 'https://astro-yi-nu.vercel.app', // required
+  author: "Yaten", // required
+  avatar: '/avatar.jpg', // required
+  url: 'https://blog.yaten.top', // required
   baseUrl: '', // When using GitHubPages, you must enter the repository name startWith '/'. e.g. '/astro-blog'
   motto: 'Actions speak louder than words.',
   recentBlogSize: 5,
@@ -49,7 +49,7 @@ export const site = {
  * memosPageSize {number} 10
  */
 export const config = {
-  lang: 'en' as 'en' | 'zh-cn' | 'zh-hant' | 'cs', // en | zh-cn | zh-hant | cs
+  lang: 'zh-cn' as 'en' | 'zh-cn' | 'zh-hant' | 'cs', // en | zh-cn | zh-hant | cs
   codeFoldingStartLines: 16, // Need to re-run the project to take effect
 
   // memos config
@@ -121,29 +121,14 @@ export const categories = [
  */
 export const infoLinks = [
   {
-    icon: 'ri-telegram-fill',
-    name: 'telegram',
-    outlink: '',
-  },
-  {
-    icon: 'ri-twitter-fill',
-    name: 'twitter',
-    outlink: '',
-  },
-  {
-    icon: 'ri-instagram-fill',
-    name: 'instagram',
-    outlink: '',
+    icon: 'ri-mail-fill',
+    name: 'Email',
+    outlink: 'mailto:Yaten-Z@outlook.com',
   },
   {
     icon: 'ri-github-fill',
     name: 'github',
-    outlink: 'https://github.com/cirry/astro-yi',
-  },
-  {
-    icon: 'ri-rss-fill',
-    name: 'rss',
-    outlink: '',
+    outlink: 'https://github.com/Yaten-Z',
   }
 ]
 
@@ -152,15 +137,11 @@ export const infoLinks = [
  * enable {boolean}
  * tip {string}
  * wechatQRCode: Image addresses should be placed in the public directory.
- * alipayQRCode: Image addresses should be placed in the public directory.
- * paypalUrl {string}
  */
 export const donate = {
-  enable: false,
+  enable: true,
   tip: "Thanks for the coffee !!!☕",
-  wechatQRCode: "/WeChatQR.png",
-  alipayQRCode: "/AliPayQR.png",
-  paypalUrl: "https://paypal.me/xxxxxxxxxx",
+  wechatQRCode: "https://s1.imagehub.cc/images/2025/06/01/f649592e5352cd5760f84d40fb29770d.jpg",
 }
 
 /**
@@ -172,12 +153,72 @@ export const donate = {
  */
 export const friendshipLinks =
   [
-    // {
-    //   name: "Cirry's Blog",
-    //   url: 'https://cirry.cn',
-    //   avatar: "https://cirry.cn/avatar.png",
-    //   description: '前端开发的日常'
-    // },
+    {
+      name: "Astro",
+      url: "https://github.com/withastro/astro",
+      avatar: "https://avatars.githubusercontent.com/u/44914786?v=4&s=640",
+      description: "The web framework for content-driven websites. ⭐️ Star to support our work!",
+    },
+    {
+      name: "TATEN",
+      url: "https://taten.xyz",
+      avatar: "https://s1.imagehub.cc/images/2025/10/18/d98ee6f0b53fceae8b21eea8cd4a1845.png",
+      description: "一群热爱编程的学生，致力于探索技术的无限可能。",
+    },
+    {
+      name: "Lin Mohan",
+      url: "https://home.linmohan.net/",
+      avatar: "https://linmohan.net/avatar.png",
+      description: "「代码重构世界，逻辑解构真理」",
+    },
+    {
+      name: "Susan",
+      url: "https://mryoung2022.github.io/",
+      avatar: "https://s1.imagehub.cc/images/2025/11/29/4f89970e09825cb0f04c9989e370dc9d.png",
+      description: "",
+    },
+    {
+      name: "HHYYYY",
+      url: "https://hhyyyy.cn/",
+      avatar: "https://s1.imagehub.cc/images/2025/07/31/1fe122170bc941cc696119b9aaca6ead.jpg",
+      description: "用科技之眼探索世界，用光影之笔记录瞬间",
+    },
+    {
+      name: "LGCM",
+      url: "http://www.LGCM.xyz",
+      avatar: "https://s1.imagehub.cc/images/2025/07/30/75fb3a7a7532703f2e7f0c095dc417f1.jpg",
+      description: "半个软件工程师",
+    },
+    {
+      name: "Errorsia",
+      url: "http://errorsia.com",
+      avatar: "https://s1.imagehub.cc/images/2025/07/30/86668972c5b3fb5e440c6e1bba1f69db.png",
+      description: "N/A",
+    },
+    {
+      name: "HungryHenry",
+      url: "https://hungryhenry.cn",
+      avatar: "https://s1.imagehub.cc/images/2025/07/31/4b1f583c02e682ac790c6bfa7a52ec0b.jpg",
+      description: "不是在写bug，就是在debug🐛",
+    },
+    {
+      name: "Ruibin_Ningh",
+      url: "https://www.ruibin-ningh.top/",
+      avatar: "https://s1.imagehub.cc/images/2025/07/31/b2e402249619e45fd0a227d7f5161d5a.jpg",
+      description: "不争于表象，只专于底层",
+    },
+    {
+      name: "GuYang17",
+      url: "https://guyang17.github.io/",
+      avatar: "https://avatars.githubusercontent.com/u/196782409?v=4",
+      description: "编程爱好者 | Minecraft玩家",
+    },
+    {
+      name: "柠檬星",
+      url: "https://blog.lemonstar.me",
+      avatar: "https://blog.lemonstar.me/img/site-icon-lemon.png",
+      description: "天空就是一杯橘子味的柠檬汽水",
+    },
   ]
 
 /**
@@ -195,7 +236,7 @@ export const friendshipLinks =
  * walineConfig.whiteList {string[]} set some pages not to display reaction
  */
 export const comment = {
-  enable: false,
+  enable: true,
   type: 'giscus', // waline | giscus,
   walineConfig: {
     serverUrl: "",
@@ -211,18 +252,18 @@ export const comment = {
 
   // giscus config
   giscusConfig: {
-    'data-repo': "",
-    'data-repo-id': "",
-    'data-category': "",
-    'data-category-id': "",
-    'data-mapping': "",
-    'data-strict': "",
-    'data-reactions-enabled': "",
-    'data-emit-metadata': "",
-    'data-input-position': "",
-    'data-theme': "",
-    'data-lang': "",
-    'crossorigin': "",
+    'data-repo': "Yaten-Z/blog-giscus",
+    'data-repo-id': "R_kgDOOzg2eg",
+    'data-category': "General",
+    'data-category-id': "DIC_kwDOOzg2es4Cq1Mp",
+    'data-mapping': "pathname",
+    'data-strict': "0",
+    'data-reactions-enabled': "1",
+    'data-emit-metadata': "0",
+    'data-input-position': "bottom",
+    'data-theme': "noborder_light",
+    'data-lang': "zh-CN",
+    'crossorigin': "anonymous",
   }
 
   //

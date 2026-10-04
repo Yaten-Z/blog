@@ -1,39 +1,130 @@
 ---
-import {site, analytics} from "@/consts";
+import {site, analytics, infoLinks} from "@/consts";
 import {t} from '@/i18n/utils'
 import getUrl from "@/utils/getUrl";
-let shouldLoadBusuanzi = analytics.enable && analytics.busuanzi
+
+let shouldLoadBusuanzi = analytics.enable && analytics.busuanzi;
+const year = new Date().getFullYear();
+
+const quickLinks = [
+  {name: 'Blog', href: '/blog/1'},
+  {name: 'Archive', href: '/archive/1'},
+  {name: 'Friends', href: '/friends'},
+  {name: 'About', href: '/about'},
+];
 ---
 
-<div class:list={[shouldLoadBusuanzi ? 'h-16' : 'h-10', 'container p-1 absolute left-0 bottom-0']}>
-  {
-    shouldLoadBusuanzi && (
-      <div class="flex items-center justify-center text-skin-base">
-    <span id="busuanzi_container_site_pv">
-      {t('footer.busuanziSitePV')}<span id="busuanzi_value_site_pv"></span>{t('footer.busuanziSitePVUnit')}
-    </span>
-        <div class="divider-vertical"></div>
-        <span id="busuanzi_container_site_uv">
-      {t('footer.busuanziSiteUV')}<span id="busuanzi_value_site_uv"></span>{t('footer.busuanziSiteUVUnit')}
-    </span>
-      </div>
-    )
-  }
-  <div class="flex items-center flex-col flex-wrap justify-center mb-4 text-skin-base first:mb-0 sm:flex-row">
-    <div>
-      <span class="cursor-default">Copyright</span>
-      <i class="ri-copyright-line align-middle"></i>
-      <span class="align-middle">{new Date().getFullYear()}</span>
-    </div>
-    {
-      site.beian && (
-        <div class="divider-vertical hidden sm:block"></div>
-        <a rel="nofollow" target="_blank" href="https://beian.miit.gov.cn/">
-          {site.beian}
-        </a>
-      )
-    }
-    <div class="divider-vertical"></div>
-    <a href={getUrl("/sitemap-0.xml")}>{t('footer.sitemap')}</a>
+<footer class="mt-16 w-full bg-skin-fill text-skin-base">
+  <div
+    class="h-px w-full"
+    style="background: linear-gradient(to right, transparent, rgba(var(--color-text-active), .7), transparent);"
+  >
   </div>
-</div>
+
+  <div class="container px-4">
+    <div class="flex flex-col gap-10 py-10 md:flex-row md:items-start md:justify-between">
+      <div class="max-w-md">
+        <a
+          href={getUrl('/')}
+          class="text-2xl font-bold tracking-wide transition-colors hover:text-skin-active"
+        >
+          {site.title}
+        </a>
+        <p class="mt-3 text-sm leading-relaxed text-skin-dodge">
+          {site.description}
+        </p>
+        <p class="mt-2 text-sm italic text-skin-dodge">
+          {site.motto}
+        </p>
+        <div class="mt-5 flex items-center gap-5">
+          {
+            infoLinks.map((infoItem) => (
+              <a
+                title={infoItem.name}
+                href={infoItem.outlink}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-2xl text-skin-dodge transition-colors hover:text-skin-active"
+              >
+                <i class={infoItem.icon} />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-skin-dodge">
+          Links
+        </span>
+        <nav class="grid grid-cols-2 gap-x-10 gap-y-3 text-sm">
+          {
+            quickLinks.map((link) => (
+              <a
+                href={getUrl(link.href)}
+                class="w-fit transition-colors hover:text-skin-active"
+              >
+                {link.name}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </div>
+
+    <div class="divider-horizontal"></div>
+
+    <div class="flex flex-col items-center justify-center gap-2 pb-8 text-center text-xs text-skin-dodge sm:flex-row sm:gap-0">
+      <span class="inline-flex items-center gap-1">
+        <i class="ri-copyright-line" />
+        <span>{year}</span>
+        <a href={getUrl('/')} class="transition-colors hover:text-skin-active">
+          {site.author}
+        </a>
+      </span>
+
+      {
+        site.beian && (
+          <>
+            <div class="divider-vertical hidden sm:block" />
+            <a
+              rel="nofollow"
+              target="_blank"
+              href="https://beian.miit.gov.cn/"
+              class="transition-colors hover:text-skin-active"
+            >
+              {site.beian}
+            </a>
+          </>
+        )
+      }
+
+      <div class="divider-vertical hidden sm:block" />
+      <a
+        href={getUrl('/sitemap-0.xml')}
+        class="transition-colors hover:text-skin-active"
+      >
+        {t('footer.sitemap')}
+      </a>
+
+      {
+        shouldLoadBusuanzi && (
+          <>
+            <div class="divider-vertical hidden sm:block" />
+            <span id="busuanzi_container_site_pv">
+              {t('footer.busuanziSitePV')}
+              <span id="busuanzi_value_site_pv" />
+              {t('footer.busuanziSitePVUnit')}
+            </span>
+            <div class="divider-vertical hidden sm:block" />
+            <span id="busuanzi_container_site_uv">
+              {t('footer.busuanziSiteUV')}
+              <span id="busuanzi_value_site_uv" />
+              {t('footer.busuanziSiteUVUnit')}
+            </span>
+          </>
+        )
+      }
+    </div>
+  </div>
+</footer>
