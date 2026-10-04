@@ -324,7 +324,36 @@ menu {
 }
 
 .expressive-code {
-  margin: 1rem 0;
+  margin: 1.25rem 0;
+}
+
+/* 代码块更柔和的外观：圆角 + 轻阴影，并与主题色协调 */
+.expressive-code figure.frame {
+  overflow: hidden;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+
+.expressive-code figure.frame:hover {
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.16);
+}
+
+/* 代码块内横向滚动条 */
+.expressive-code pre::-webkit-scrollbar {
+  height: 8px;
+}
+
+.expressive-code pre::-webkit-scrollbar-thumb {
+  background-color: rgba(var(--color-text), .25);
+  border-radius: 4px;
+}
+
+/* 行内代码（非代码块）样式 */
+.markdown-body :not(pre) > code {
+  font-size: .9em;
+  padding: .15em .4em;
+  margin: 0 .1em;
+  border-radius: 4px;
+  background-color: rgba(var(--color-text), .08);
 }
 
 /* fix mathjax style */

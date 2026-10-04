@@ -31,6 +31,16 @@ export default defineConfig({
     styleOverrides: {
       codeFontFamily: "jetbrains-mono",
       uiFontFamily: "jetbrains-mono",
+      codeFontSize: "0.9rem",
+      codeLineHeight: "1.7",
+      uiFontSize: "0.85rem",
+      borderRadius: "8px",
+      borderWidth: "1px",
+      codePaddingBlock: "1.15rem",
+      codePaddingInline: "1.35rem",
+      frames: {
+        frameBoxShadowCssValue: "0 8px 24px rgba(0, 0, 0, 0.12)",
+      },
     },
     themeCssSelector: (theme) => `[data-theme="${theme.type}"]`
   }), mdx()],
