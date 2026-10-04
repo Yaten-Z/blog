@@ -30,7 +30,7 @@ export const site = {
   avatar: '/avatar.jpg', // required
   url: 'https://blog.yaten.top', // required
   baseUrl: '', // When using GitHubPages, you must enter the repository name startWith '/'. e.g. '/astro-blog'
-  motto: 'Actions speak louder than words.',
+  motto: '我要去另一个世界找你',
   recentBlogSize: 5,
   archivePageSize: 25,
   postPageSize: 10,
