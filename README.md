@@ -1,16 +1,10 @@
-# Astro Theme Yi
+# Yaten's Blog
 
 [[English]](./README.md) | [[简体中文]](./README-ZH-CN.md)
 
-Demo：[Astro-Theme-Yi](https://astro-yi-nu.vercel.app/)
+Website: [blog.yaten.top](https://blog.yaten.top)
 
-A content-focused Astro blog theme, Yi, in Chinese, it means fast and concise.
-
-![](https://astro-yi.obs.cn-east-3.myhuaweicloud.com/9.png)
-
-![](https://astro-yi.obs.cn-east-3.myhuaweicloud.com/1.png)
-
-![](https://astro-yi.obs.cn-east-3.myhuaweicloud.com/8.png)
+Yaten's personal blog, built on the [Astro Theme Yi](https://github.com/cirry/astro-yi) theme — a content-focused Astro blog theme, fast and concise.
 
 ### 🔥 Features
 
@@ -37,17 +31,17 @@ A content-focused Astro blog theme, Yi, in Chinese, it means fast and concise.
 
 ### Vercel Deplyment
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https%3A%2F%2Fgithub.com%2Fcirry%2Fastro-yi)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https%3A%2F%2Fgithub.com%2FYaten-Z%2Fblog)
 
 Give it a try! Click the button above, and you can deploy with just one click.
 
 ### 👨🏻‍💻 Manual Installation
 
-Recommended for use `nodejs >= 20`,`pnpm >= 8`。
+Recommended for use `nodejs >= 22.12.0`,`pnpm >= 11`。
 
 ```bash
-git clone https://github.com/cirry/astro-yi.git
-cd astro-yi
+git clone https://github.com/Yaten-Z/blog.git
+cd blog
 npm install -g pnpm # install pnpm
 pnpm i  # installs dependencies
 npm run dev # preview, starts local dev server at localhost:4321
@@ -65,8 +59,8 @@ In /src/consts.ts, modify the contents of the site field:
 ```js
 export const site = {
   // ...
-  url: 'https://cirry.github.io', // required,  website origin
-  baseUrl: '/yi.github.io', // When using GitHubPages, you must enter the repository name startwith '/'
+  url: 'https://blog.yaten.top', // required,  website origin
+  baseUrl: '', // When using GitHubPages, you must enter the repository name startwith '/'
   // ...
 }
 ```
@@ -76,241 +70,47 @@ export const site = {
 The only profile for this blog is: `src/consts.ts`, you can make some modifications according to your needs.
 
 ```ts
-/**
- * title {string} website title
- * favicon {string} website favicon url
- * description {string} website description
- * author {string} author
- * avatar {string} Avatar used in the profile
- * motto {string} used in the profile
- * url {string} Website link
- * baseUrl {string} When using GitHubPages, you must enter the repository name
- * recentBlogSize {number} Number of recent articles displayed in the sidebar
- * archivePageSize {number} Number of articles on archive pages
- * postPageSize {number} Number of articles on blog pages
- * feedPageSize {number} Number of articles on feed pages
- * beian {string} Chinese policy
- */
 export const site = {
-    title: 'Astro Theme Yi',
-    favicon: '/favicon.svg',
-    description: 'Welcome to my independent blog website! ',
-    author: "xxxxx",
-    avatar: '/avatar.png',
-    motto: 'Keep moving.',
-    url: 'https://astro-yi-nu.vercel.app',
-    recentBlogSize: 5,
-    archivePageSize: 25,
-    postPageSize: 10,
-    feedPageSize: 20,
-    beian: ''
-  }
+  title: "Yaten's Blog",
+  favicon: '/favicon.svg',
+  description: 'Welcome to my independent blog website! ',
+  author: "Yaten",
+  avatar: '/avatar.jpg',
+  motto: '我要去另一个世界找你',
+  url: 'https://blog.yaten.top',
+  baseUrl: '',
+  recentBlogSize: 5,
+  archivePageSize: 25,
+  postPageSize: 10,
+  feedPageSize: 20,
+  beian: '',
+}
 
-/**
- * lang {string} Default website language: English
- * codeFoldingStartLines {number} default 16
- * memosUrl {string} memos server url
- * memosUsername {string} memos login name
- * memosPageSize {number} 10
- */
 export const config = {
-  lang: 'en', // English: en | 简体中文: zh-cn | 繁體中文: zh-hant | cs
+  lang: 'zh-cn', // English: en | 简体中文: zh-cn | 繁體中文: zh-hant | cs
   codeFoldingStartLines: 16, // Need to re-run the project to take effect
-  
+
   // memos config
   memosUrl: '', // https://xxxx.xxx.xx
   memosUsername: '', // login name
   memosPageSize: 10, // number
 }
 
-/**
- * Navigator
- */
-export const categories = [
-  {
-    name: "Homepage",
-    iconClass: "ri-home-4-line",
-    href: "/",
-  },
-  {
-    name: "Blog",
-    iconClass: "ri-draft-line",
-    href: "/blog/1",
-  },
-  {
-    name: "Feed",
-    iconClass: "ri-lightbulb-flash-line",
-    href: "/feed/1",
-  },
-  {
-    name: "Archive",
-    iconClass: "ri-archive-line",
-    href: "/archive/1",
-  },
-  {
-    name: "Message",
-    iconClass: "ri-chat-1-line",
-    href: "/message/",
-  },
-  {
-    name: "Search",
-    iconClass: "ri-search-line",
-    href: "/search",
-  },
-  {
-    name: "More",
-    iconClass: "ri-more-fill",
-    href: "javascript:void(0);",
-    children: [
-      {
-        name: 'About',
-        iconClass: 'ri-information-line',
-        href: '/about',
-      },
-      {
-        name: 'Friends',
-        iconClass: 'ri-user-5-line',
-        href: '/friends',
-        target: '_self', // _self | _blank
-      },
-    ]
-  }
-]
-
-/**
- * Personal link address
- */
 export const infoLinks = [
   {
-    icon: 'ri-telegram-fill',
-    name: 'telegram',
-    outlink: 'xxxxxxx',
-  },
-  {
-    icon: 'ri-twitter-fill',
-    name: 'twitter',
-    outlink: 'xxxxxxx',
-  },
-  {
-    icon: 'ri-instagram-fill',
-    name: 'instagram',
-    outlink: 'xxxxxxx',
+    icon: 'ri-mail-fill',
+    name: 'Email',
+    outlink: 'mailto:Yaten-Z@outlook.com',
   },
   {
     icon: 'ri-github-fill',
     name: 'github',
-    outlink: 'https://github.com/cirry',
+    outlink: 'https://github.com/Yaten-Z',
   },
-  {
-    icon: 'ri-mail-fill',
-    name: 'xxxxxxx@gmail.com',
-    outlink: 'mailto:xxxxxxx@gmail.com',
-  },
-  {
-    icon: 'ri-rss-fill',
-    name: 'rss',
-    outlink: 'https://xxxxx.com/rss.xml',
-  }
 ]
-
-/**
- * Donation feature
- * Please replace the image and paypal link before use.
- * enable {boolean}
- * tip {string}
- */
-export const donate = {
-  enable: false,
-  tip: "Thanks for the coffee !!!☕",
-  wechatQRCode: "/WeChatQR.png",
-  alipayQRCode: "/AliPayQR.png",
-  paypalUrl: "https://paypal.me/xxxxxxxx",
-}
-
-/**
- * Friends Links Page
- * name {string}
- * url {string}
- * avatar {string}
- * description {string}
- */
-export const friendshipLinks =
-  [
-    {
-      name: "Cirry's Blog",
-      url: 'https://cirry.cn',
-      avatar: "https://cirry.cn/avatar.png",
-      description: 'frontend development'
-    },
-  ]
-
-/**
- * Comment Feature
- * enable {boolean}
- * type {string} giscus and waline are currently supported.
- * walineConfig.serverUrl {string} server link
- * walineConfig.pageSize {number} number of comments per page. default 10
- * walineConfig.wordLimit {number} Comment word s limit. When a single number is filled in, it 's the maximum number of comment words. No limit when set to 0
- * walineConfig.count {number} recent comment numbers
- * walineConfig.pageview {boolean} display the number of page views and comments of the article
- * walineConfig.reaction {string | string[]} Add emoji interaction function to the article
- * walineConfig.requiredMeta {string[]}  Set required fields, default anonymous
- */
-export const comment = {
-  enable: false,
-  type: 'giscus', // waline | giscus,
-  walineConfig:{
-    serverUrl: "https://xxxxx.xxxxx.app",
-    lang: 'en',
-    pageSize: 20,
-    wordLimit: '',
-    count: 5,
-    pageview: true,
-    reaction: true,
-    requiredMeta: ["nick", "mail"],
-    whiteList: ['/message/', '/friends/'],
-  },
-
-  // giscus config
-  giscusConfig: {
-    'data-repo': "xxxxxxx",
-    'data-repo-id': "xxxxxx",
-    'data-category': "Announcements",
-    'data-category-id': "xxxxxxxxx",
-    'data-mapping': "pathname",
-    'data-strict': "0",
-    'data-reactions-enabled': "1",
-    'data-emit-metadata': "0",
-    'data-input-position': "bottom",
-    'data-theme': "light",
-    'data-lang': "xxxxxxxxxxx",
-    'crossorigin': "anonymous",
-  }
-}
-
-/**
- * Analytics Feature Configuration
- *
- * This file centralizes the analytics configuration for the application.
- * It defines and exports the default settings for Umami and Google Analytics.
- */
-export const analytics: AnalyticsConfig = {
-  enable: false,
-  umamiConfig: {
-    enable: false,
-    id: "",
-    url: ""
-  },
-  gaConfig: {
-    enable: false,
-    id: ""
-  },
-  busuanzi: false,
-};
-
 ```
 
-Please modify your website configuration, comment system configuration, appreciation function image, personal information links, and of course, you can also modify other configuration content.
+> Navigation, donation, friendship links, comments and analytics are all configured in the same file `src/consts.ts`.
 
 ### Write a blog 
 
@@ -374,7 +174,7 @@ In the `astro.config.js` file in the root directory, it is recommended to modify
 
 ```js
 export default defineConfig({
-  site: 'https://xxxx.com',// Modify to your own website address
+  site: 'https://blog.yaten.top',// Modify to your own website address
   // ...
 })
 ```
@@ -384,5 +184,5 @@ Add a line to the path of your sitemap file at the end of the robots.txt file in
 
 ```text
 Sitemap: [blog-url]/sitemap-0.xml
-// ps：Sitemap: https://astro-yi-nu.vercel.app/sitemap-0.xml
+// ps：Sitemap: https://blog.yaten.top/sitemap-0.xml
 ```
