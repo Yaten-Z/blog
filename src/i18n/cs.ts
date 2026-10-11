@@ -9,6 +9,7 @@ export  let cs = {
   'feed.next': 'Další',
   'feed.previous': 'Předchozí',
   'feed.publishedIn':'Publikováno v',
+  'feed.readMore': 'Zobrazit více',
   'footer.articleAuthor':'Autor článku',
   'footer.articleTitle':'Název článku',
   'footer.busuanziSitePV':'Zobrazení stránky:',

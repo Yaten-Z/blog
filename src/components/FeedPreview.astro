@@ -1,34 +1,37 @@
 ---
-import FeedPostDate from "./FeedPostDate.astro";
+import { render } from "astro:content";
 import getUrl from "@/utils/getUrl";
-const {data, body, id} = Astro.props.post;
-const {index} = Astro.props;
+import { formatDate } from "@/utils/formatDate";
+import { t } from "@/i18n/utils";
+const post = Astro.props.post;
+const { data, id } = post;
+const { Content } = await render(post);
 
-const title =
-  body
-    .split("\n")
-    .map((line) =>
-      line
-        .replace(/^#+\s?/, "")
-        .replace(/!?\[.*?\]\(.*?\)/g, "")
-        .replace(/\\\s*$/, "")
-        .trim()
-    )
-    .find((line) => line.length > 0) ?? "";
+const url = getUrl("/feed/") + id;
 ---
 
 <div class="my-5 first:mt-0">
   <div class="text-skin-base">
-    <a
-      class="flex text-xl underline-offset-4 cursor-pointer decoration-skin-base decoration-wavy hover:underline font-bold break-all"
-      href={getUrl("/feed/") + id}
-    >
-      {title}
-    </a>
-
     <div class="flex flex-wrap items-center my-2 text-skin-dodge">
-      <FeedPostDate date={data.date} index={index} />
+      {
+        data.date && (
+          <div class="mr-2">
+            <i class="ri-calendar-2-fill mr-1" />
+            {formatDate(data.date)}
+          </div>
+        )
+      }
     </div>
   </div>
+  <article class="markdown-body scroll-smooth mb-4 break-all">
+    <Content />
+  </article>
+  <a
+    class="inline-flex items-center text-skin-active underline-offset-4 decoration-skin-active decoration-wavy hover:underline"
+    href={url}
+  >
+    {t("feed.readMore")}
+    <i class="ri-arrow-right-s-line ml-1" />
+  </a>
 </div>
-<div class="divider-horizontal-mini"></div>
+<div class="divider-wavy"></div>
