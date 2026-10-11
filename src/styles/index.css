@@ -9,6 +9,9 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme {
+  /* Handwriting font (profile display name). */
+  --font-handwriting: "Caveat", "Segoe Script", cursive;
+
   /* Custom breakpoints (were theme.screens). */
   --breakpoint-sm: 600px;
   --breakpoint-md: 720px;
@@ -16,18 +19,18 @@
   --breakpoint-xl: 960px;
   --breakpoint-2xl: 1080px;
 
-  /* theme.extend.colors.custom.* */
-  --color-custom-title: #555;
-  --color-custom-subtitle: #999;
-  --color-custom-hover: #e0a419;
-  --color-custom-active: #ff7f50;
-  --color-custom-grey: #f6f6f6;
-  --color-custom-nav: #ded6d8;
-  --color-custom-primary: #edede9;
-  --color-custom-second: #d6ccc2;
-  --color-custom-third: #f5ebe0;
-  --color-custom-forth: #e3d5ca;
-  --color-custom-fifth: #d5bdaf;
+  /* theme.extend.colors.custom.* (blue-tinted neutral scale) */
+  --color-custom-title: #0f172a;
+  --color-custom-subtitle: #64748b;
+  --color-custom-hover: #2563eb;
+  --color-custom-active: #1d4ed8;
+  --color-custom-grey: #f1f5f9;
+  --color-custom-nav: #dbe4f0;
+  --color-custom-primary: #f7fafd;
+  --color-custom-second: #dbe4f0;
+  --color-custom-third: #eef4fb;
+  --color-custom-forth: #dbe4f0;
+  --color-custom-fifth: #c7d6ea;
 }
 
 /*
@@ -51,6 +54,7 @@
 @utility border-skin-normal { border-color: rgb(var(--color-text)); }
 @utility border-skin-base { border-color: rgb(var(--color-border)); }
 @utility border-skin-dodge { border-color: rgb(var(--color-text-dodge)); }
+@utility border-skin-active { border-color: rgb(var(--color-border-active)); }
 @utility decoration-skin-base { text-decoration-color: rgb(var(--color-border)); }
 @utility decoration-skin-active { text-decoration-color: rgb(var(--color-text-active)); }
 
@@ -110,27 +114,29 @@ menu {
 
   :root,
   html[data-theme="light"] {
-    --color-fill: 241, 241, 241;
-    --color-fill-secondary: 251, 251, 251;
-    --color-card: 241, 241, 241;
-    --color-text: 80, 73, 69;
-    --color-text-dodge: 150, 150, 150;
-    --color-text-active: 181, 118, 20;
-    --color-border: 104, 157, 106;
-    --color-border-active: 14, 192, 124;
-    --color-modal: 52, 58, 64;
+    /* 浅蓝底 · 深蓝强调（亮色）：冷调近白，蓝色作为链接/悬停色 */
+    --color-fill: 236, 242, 250;        /* #ecf2fa 顶栏/页脚 */
+    --color-fill-secondary: 247, 250, 253; /* #f7fafd 页面背景 */
+    --color-card: 255, 255, 255;        /* #ffffff 卡片 */
+    --color-text: 15, 23, 42;           /* #0f172a 正文 */
+    --color-text-dodge: 100, 116, 139;  /* #64748b 次要文字 */
+    --color-text-active: 37, 99, 235;   /* #2563eb 深蓝强调 */
+    --color-border: 214, 225, 240;      /* #d6e1f0 分隔线 */
+    --color-border-active: 37, 99, 235; /* #2563eb 聚焦边框 */
+    --color-modal: 15, 23, 42;          /* #0f172a */
   }
 
   html[data-theme="dark"] {
-    --color-fill: 40, 40, 40;
-    --color-fill-secondary: 52, 58, 64;
-    --color-card: 40, 42, 54;
-    --color-text: 249, 244, 227;
-    --color-text-dodge: 150, 150, 150;
-    --color-text-active: 250, 189, 47;
-    --color-border: 214, 93, 14;
-    --color-border-active: 7, 102, 120;
-    --color-modal: 251, 251, 251;
+    /* 深蓝底 · 浅蓝强调（暗色）：藏青背景，浅蓝作为链接/悬停色 */
+    --color-fill: 17, 26, 44;           /* #111a2c 顶栏/页脚 */
+    --color-fill-secondary: 9, 15, 28;  /* #090f1c 页面背景 */
+    --color-card: 22, 33, 54;           /* #162136 卡片 */
+    --color-text: 226, 232, 240;        /* #e2e8f0 正文 */
+    --color-text-dodge: 124, 138, 160;  /* #7c8aa0 次要文字 */
+    --color-text-active: 125, 176, 255; /* #7db0ff 浅蓝强调 */
+    --color-border: 38, 51, 74;         /* #26334a 分隔线 */
+    --color-border-active: 125, 176, 255; /* #7db0ff 聚焦边框 */
+    --color-modal: 226, 232, 240;       /* #e2e8f0 */
   }
 
   #sun-icon,
@@ -277,11 +283,11 @@ menu {
 ::-webkit-scrollbar {
   width: 10px;
   height: 16px;
-  background-color: #edede9;
+  background-color: rgb(var(--color-fill));
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #c0c4cc;
+  background-color: rgba(var(--color-text), .3);
   border-radius: 4px;
 }
 
