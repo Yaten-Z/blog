@@ -6,37 +6,46 @@ import getUrl from "@/utils/getUrl";
 let shouldLoadBusuanzi = analytics.enable && analytics.busuanzi;
 const year = new Date().getFullYear();
 
+// 知乎主页链接（请替换为你的主页地址）
+const zhihuUrl = 'https://www.zhihu.com/people/David-Sheep';
+
 const quickLinks = [
-  {name: 'Blog', href: '/blog/1'},
-  {name: 'Archive', href: '/archive/1'},
-  {name: 'Friends', href: '/friends'},
-  {name: 'About', href: '/about'},
+  {name: 'HomePage', href: '/', external: false},
+  {name: 'Blog', href: '/blog/1', external: false},
+  {name: 'Archive', href: '/archive/1', external: false},
+  {name: 'Friends', href: '/friends', external: false},
+  {name: 'About', href: '/about', external: false},
+  {name: 'Zhihu', href: zhihuUrl, external: true},
+  {name: 'TATEN', href: 'https://taten.xyz', external: true},
+  {name: 'LINMOH', href: 'https://home.linmohan.net/', external: true},
 ];
+
+const startISO = new Date(`${site.startDate}T00:00:00+08:00`).toISOString();
 ---
 
-<footer class="mt-16 w-full bg-skin-fill text-skin-base">
+<footer class="relative mt-16 w-full overflow-hidden border-t border-skin-base bg-skin-fill text-skin-base">
   <div
-    class="h-px w-full"
-    style="background: linear-gradient(to right, transparent, rgba(var(--color-text-active), .7), transparent);"
+    class="pointer-events-none absolute inset-x-0 top-0 h-72"
+    style="background: radial-gradient(60% 130% at 50% -20%, rgba(var(--color-text-active), .14), transparent 70%);"
   >
   </div>
 
-  <div class="container px-4">
-    <div class="flex flex-col gap-10 py-10 md:flex-row md:items-start md:justify-between">
-      <div class="max-w-md">
+  <div class="container relative px-4">
+    <div class="grid grid-cols-1 gap-10 py-12 sm:grid-cols-2 lg:grid-cols-12">
+      <div class="sm:col-span-2 lg:col-span-5">
         <a
           href={getUrl('/')}
-          class="text-2xl font-bold tracking-wide transition-colors hover:text-skin-active"
+          class="inline-flex items-baseline gap-0.5 text-3xl font-bold uppercase tracking-[0.12em]"
         >
-          {site.title}
+          <span class="text-skin-active">/</span>{site.title}
         </a>
-        <p class="mt-3 text-sm leading-relaxed text-skin-dodge">
+        <p class="mt-3 max-w-md text-base leading-relaxed text-skin-dodge">
           {site.description}
         </p>
-        <p class="mt-2 text-sm italic text-skin-dodge">
+        <p class="mt-2 max-w-md text-base italic text-skin-dodge">
           {site.motto}
         </p>
-        <div class="mt-5 flex items-center gap-5">
+        <div class="mt-5 flex items-center gap-3">
           {
             infoLinks.map((infoItem) => (
               <a
@@ -44,7 +53,7 @@ const quickLinks = [
                 href={infoItem.outlink}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-2xl text-skin-dodge transition-colors hover:text-skin-active"
+                class="flex h-10 w-10 items-center justify-center border border-skin-base text-xl text-skin-dodge"
               >
                 <i class={infoItem.icon} />
               </a>
@@ -53,70 +62,70 @@ const quickLinks = [
         </div>
       </div>
 
-      <div class="flex flex-col gap-4">
-        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-skin-dodge">
-          Links
-        </span>
-        <nav class="grid grid-cols-2 gap-x-10 gap-y-3 text-sm">
+      <div class="lg:col-span-3">
+        <h3 class="text-sm font-semibold uppercase tracking-[0.2em] text-skin-dodge">
+          {t('footer.nav')}
+        </h3>
+        <nav class="mt-4 grid grid-cols-2 gap-x-6 gap-y-3 text-base">
           {
-            quickLinks.map((link) => (
-              <a
-                href={getUrl(link.href)}
-                class="w-fit transition-colors hover:text-skin-active"
-              >
-                {link.name}
-              </a>
-            ))
+            quickLinks.map((link) =>
+              link.external ? (
+                <a href={link.href} target="_blank" rel="noopener noreferrer">
+                  {link.name}
+                </a>
+              ) : (
+                <a href={getUrl(link.href)}>{link.name}</a>
+              )
+            )
           }
         </nav>
+      </div>
+
+      <div class="lg:col-span-4">
+        <h3 class="text-sm font-semibold uppercase tracking-[0.2em] text-skin-dodge">
+          {t('footer.uptime')}
+        </h3>
+        <p
+          id="site-runtime"
+          data-start={startISO}
+          class="mt-4 font-mono text-base tabular-nums text-skin-dodge"
+        >
+          <span class="text-skin-active" data-unit="days">0</span> {t('footer.unitDay')}
+          <span class="text-skin-active" data-unit="hours">00</span> {t('footer.unitHour')}
+          <span class="text-skin-active" data-unit="minutes">00</span> {t('footer.unitMin')}
+          <span class="text-skin-active" data-unit="seconds">00</span> {t('footer.unitSec')}
+        </p>
       </div>
     </div>
 
     <div class="divider-horizontal"></div>
 
-    <div class="flex flex-col items-center justify-center gap-2 pb-8 text-center text-xs text-skin-dodge sm:flex-row sm:gap-0">
-      <span class="inline-flex items-center gap-1">
-        <i class="ri-copyright-line" />
-        <span>{year}</span>
-        <a href={getUrl('/')} class="transition-colors hover:text-skin-active">
-          {site.author}
-        </a>
-      </span>
+    <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 pb-8 text-center text-sm tracking-wide text-skin-dodge">
+      <span>&copy; {year}</span>
+      <a href={getUrl('/')} class="text-skin-base">{site.author}</a>
+      <span>All Rights Reserved.</span>
 
       {
         site.beian && (
           <>
-            <div class="divider-vertical hidden sm:block" />
-            <a
-              rel="nofollow"
-              target="_blank"
-              href="https://beian.miit.gov.cn/"
-              class="transition-colors hover:text-skin-active"
-            >
+            <span class="h-3 w-px bg-skin-base opacity-40" />
+            <a rel="nofollow" target="_blank" href="https://beian.miit.gov.cn/">
               {site.beian}
             </a>
           </>
         )
       }
 
-      <div class="divider-vertical hidden sm:block" />
-      <a
-        href={getUrl('/sitemap-0.xml')}
-        class="transition-colors hover:text-skin-active"
-      >
-        {t('footer.sitemap')}
-      </a>
-
       {
         shouldLoadBusuanzi && (
           <>
-            <div class="divider-vertical hidden sm:block" />
+            <span class="h-3 w-px bg-skin-base opacity-40" />
             <span id="busuanzi_container_site_pv">
               {t('footer.busuanziSitePV')}
               <span id="busuanzi_value_site_pv" />
               {t('footer.busuanziSitePVUnit')}
             </span>
-            <div class="divider-vertical hidden sm:block" />
+            <span class="h-3 w-px bg-skin-base opacity-40" />
             <span id="busuanzi_container_site_uv">
               {t('footer.busuanziSiteUV')}
               <span id="busuanzi_value_site_uv" />
@@ -128,3 +137,32 @@ const quickLinks = [
     </div>
   </div>
 </footer>
+
+<script>
+  const runtimeEl = document.getElementById('site-runtime');
+  if (runtimeEl) {
+    const start = new Date(runtimeEl.dataset.start as string).getTime();
+    const units = {
+      days: runtimeEl.querySelector('[data-unit="days"]'),
+      hours: runtimeEl.querySelector('[data-unit="hours"]'),
+      minutes: runtimeEl.querySelector('[data-unit="minutes"]'),
+      seconds: runtimeEl.querySelector('[data-unit="seconds"]'),
+    };
+    const pad = (value: number) => String(value).padStart(2, '0');
+    const tick = () => {
+      let diff = Date.now() - start;
+      if (diff < 0) diff = 0;
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+      if (units.days) units.days.textContent = String(days);
+      if (units.hours) units.hours.textContent = pad(hours);
+      if (units.minutes) units.minutes.textContent = pad(minutes);
+      if (units.seconds) units.seconds.textContent = pad(seconds);
+    };
+    tick();
+    setInterval(tick, 1000);
+  }
+</script>

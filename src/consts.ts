@@ -31,6 +31,7 @@ export const site = {
   url: 'https://blog.yaten.top', // required
   baseUrl: '', // When using GitHubPages, you must enter the repository name startWith '/'. e.g. '/astro-blog'
   motto: '我要去另一个世界找你',
+  startDate: '2023-03-24', // 网站运行起始日期 (YYYY-MM-DD)，用于页脚运行时间
   recentBlogSize: 5,
   archivePageSize: 25,
   postPageSize: 10,
@@ -129,6 +130,11 @@ export const infoLinks = [
     icon: 'ri-github-fill',
     name: 'github',
     outlink: 'https://github.com/Yaten-Z',
+  },
+  {
+    icon: 'ri-rss-fill',
+    name: 'RSS',
+    outlink: '/rss.xml',
   }
 ]
 
