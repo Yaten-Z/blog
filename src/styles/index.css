@@ -296,6 +296,43 @@ menu {
   /* margin: 0 auto; */
 }
 
+/* feed 图片九宫格：一行三个，最多三行九个，从左到右排列 */
+.feed-image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 12px 0;
+  justify-content: start;
+}
+
+.feed-image-grid .feed-image-item {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.feed-image-grid .feed-image-item > a,
+.feed-image-grid .feed-image-item > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.feed-image-grid .feed-image-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
 /* 修改滚动条样式 */
 
 ::-webkit-scrollbar {

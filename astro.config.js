@@ -17,6 +17,7 @@ import {remarkGithubCard} from './src/plugins/remark-github-card.js'
 import {lazyLoadImage} from "./src/plugins/lazy-load-image.js";
 import {remarkButton} from "./src/plugins/remark-button.js";
 import {remarkHtml} from "./src/plugins/remark-html.js";
+import {feedImageGallery} from "./src/plugins/feed-image-gallery.js";
 
 export default defineConfig({
   site: site.url,
@@ -50,7 +51,7 @@ export default defineConfig({
   markdown: {
     processor: unified({
       remarkPlugins: [remarkModifiedTime, resetRemark, remarkDirective, remarkAsides({}), remarkCollapse({}), remarkGithubCard(), remarkButton(), remarkHtml()],
-      rehypePlugins: [lazyLoadImage],
+      rehypePlugins: [feedImageGallery, lazyLoadImage],
     }),
   },
   // Tailwind v4 is wired through its Vite plugin (replaces the removed @astrojs/tailwind integration).
