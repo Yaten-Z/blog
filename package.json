@@ -19,6 +19,7 @@
     "astro-expressive-code": "^0.44.2",
     "astro-icon": "^1.2.0",
     "medium-zoom": "^1.1.0",
+    "mermaid": "^12.3.0",
     "rehype-mathjax": "^7.1.0",
     "remark-alert": "^0.1.0",
     "remark-blackout": "^1.0.0",

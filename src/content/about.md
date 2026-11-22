@@ -1,17 +1,21 @@
-## 关于本站
+## Hi, I'm Yaten
 
-这里是 Astro Theme Mello 的示例关于页。
+A student developer with a deep interest in computers.
 
-Mello 是一个以阅读体验为核心的 Astro 博客主题，强调留白、排版与内容本身。
+## About Me
 
-## 关于主题
+I am a ninth-grade student from Guangdong, China. I enjoy learning new technologies, exploring through hands-on projects, and gradually turning ideas into reality. During my studies, I actively participate in open-source projects. I have also joined the TATEN team, where I collaborate, learn, and develop projects alongside like-minded middle school students. Through this experience, I have gained valuable insights.
 
-- 框架：[Astro](https://astro.build/)
-- 主题：Mello
-- 评论：Waline（默认关闭）
-- 许可：MIT
+I continuously engage in various projects to enhance my development skills. Feel free to browse my repository to see what I'm currently building, refactoring, or experimenting with.
 
+## My Blog
 
-## 开始使用
+I write articles and notes on my personal blog about development practices, learning insights, and technical explorations. Feel free to visit: [Yaten's Blog](https://blog.yaten.top)
 
-在 `src/content/posts/` 中新建 Markdown 文件即可开始写作。示例文章可以直接删除或替换。
+## Get in Touch
+
+If you wish to engage in academic exchange or discussion with me, feel free to reach out anytime through the following channels:
+
+- Email: [Yaten-Z@outlook.com](mailto:Yaten-Z@outlook.com) or [Yaten-Z@qq.com](mailto:Yaten-Z@qq.com)
+- QQ: 2635802854
+- Blog: [https://blog.yaten.top](https://blog.yaten.top)

@@ -1,13 +1,13 @@
 // 基础配置
 export const BASE_CONFIG = {
-  title: 'Mello',
-  subtitle: 'Mello',
-  description: '简约、高效、优雅。',
-  author: 'Mello',
+  title: "Yaten's Blog",
+  subtitle: "Yaten's Blog",
+  description: '记录代码、文字与生活。',
+  author: 'Yaten',
   favicon: '/favicon.svg',
-  avatar: '/avatar.webp',
-  site_url: 'https://example.com',
-  create_time: '2024-01-23',
+  avatar: '/avatar.jpg',
+  site_url: 'https://blog.yaten.top',
+  create_time: '2023-03-24',
 }
 
 // 配色方案
@@ -27,7 +27,7 @@ export const HEADER_CONFIG = {
   nav: [
     { label: '归档', href: '/archive' },
     { label: '分类', href: '/category' },
-    { label: '朋友', href: '/link' },
+    { label: '友链', href: '/link' },
     { label: '关于', href: '/about' },
   ],
 }
@@ -35,7 +35,8 @@ export const HEADER_CONFIG = {
 // 页脚配置
 export const FOOTER_CONFIG = {
   link: [
-    { name: 'Astro', url: 'https://astro.build/'},
+    { name: 'GitHub', url: 'https://github.com/Yaten-Z' },
+    { name: 'RSS', url: '/rss.xml' },
   ]
 }
 
