@@ -1,103 +1,225 @@
-/* Giscus 主题（浅色）——白底、近黑字、粉色强调 */
+/* Giscus 主题（浅色）——对应 Mello paper 配色：宣纸、墨色、灰绿强调 */
 main {
-  --color-prettylights-syntax-comment: #8a8a8a;
-  --color-prettylights-syntax-constant: #333333;
-  --color-prettylights-syntax-entity: #3d3d3d;
-  --color-prettylights-syntax-storage-modifier-import: #111111;
-  --color-prettylights-syntax-entity-tag: #2e2e2e;
-  --color-prettylights-syntax-keyword: #111111;
-  --color-prettylights-syntax-string: #4d4d4d;
-  --color-prettylights-syntax-variable: #3d3d3d;
-  --color-prettylights-syntax-brackethighlighter-unmatched: #000000;
-  --color-prettylights-syntax-invalid-illegal-text: #ffffff;
-  --color-prettylights-syntax-invalid-illegal-bg: #111111;
-  --color-prettylights-syntax-carriage-return-text: #ffffff;
-  --color-prettylights-syntax-carriage-return-bg: #333333;
-  --color-prettylights-syntax-string-regexp: #4d4d4d;
-  --color-prettylights-syntax-markup-list: #333333;
-  --color-prettylights-syntax-markup-heading: #111111;
-  --color-prettylights-syntax-markup-italic: #111111;
-  --color-prettylights-syntax-markup-bold: #111111;
-  --color-prettylights-syntax-markup-deleted-text: #111111;
-  --color-prettylights-syntax-markup-deleted-bg: #f2f2f2;
-  --color-prettylights-syntax-markup-inserted-text: #111111;
-  --color-prettylights-syntax-markup-inserted-bg: #ededed;
-  --color-prettylights-syntax-markup-changed-text: #222222;
-  --color-prettylights-syntax-markup-changed-bg: #f2f2f2;
-  --color-prettylights-syntax-markup-ignored-text: #111111;
-  --color-prettylights-syntax-markup-ignored-bg: #ededed;
-  --color-prettylights-syntax-meta-diff-range: #3d3d3d;
-  --color-prettylights-syntax-brackethighlighter-angle: #646464;
-  --color-prettylights-syntax-sublimelinter-gutter-mark: #a3a3a3;
-  --color-prettylights-syntax-constant-other-reference-link: #4d4d4d;
+  --gsc-font: "Noto Serif SC", "Songti SC", "Source Han Serif SC", "STSong", SimSun, Georgia, serif;
+  --gsc-code-font: Consolas, "Courier New", monospace;
 
-  --color-btn-text: #111111;
-  --color-btn-bg: #f6f6f6;
-  --color-btn-border: #e5e5e5;
+  /* 代码语法色 */
+  --color-prettylights-syntax-comment: #7a766d;
+  --color-prettylights-syntax-constant: #a89279;
+  --color-prettylights-syntax-entity: #6b7b6e;
+  --color-prettylights-syntax-storage-modifier-import: #2c2c2c;
+  --color-prettylights-syntax-entity-tag: #697a7c;
+  --color-prettylights-syntax-keyword: #6b7b6e;
+  --color-prettylights-syntax-string: #697a7c;
+  --color-prettylights-syntax-variable: #8a7560;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #9c5a4f;
+  --color-prettylights-syntax-invalid-illegal-text: #f8f5f0;
+  --color-prettylights-syntax-invalid-illegal-bg: #9c5a4f;
+  --color-prettylights-syntax-carriage-return-text: #f8f5f0;
+  --color-prettylights-syntax-carriage-return-bg: #3c3b37;
+  --color-prettylights-syntax-string-regexp: #697a7c;
+  --color-prettylights-syntax-markup-list: #3c3b37;
+  --color-prettylights-syntax-markup-heading: #2c2c2c;
+  --color-prettylights-syntax-markup-italic: #3c3b37;
+  --color-prettylights-syntax-markup-bold: #2c2c2c;
+  --color-prettylights-syntax-markup-deleted-text: #9c5a4f;
+  --color-prettylights-syntax-markup-deleted-bg: #f3e8e6;
+  --color-prettylights-syntax-markup-inserted-text: #56665a;
+  --color-prettylights-syntax-markup-inserted-bg: #eaf0eb;
+  --color-prettylights-syntax-markup-changed-text: #8a7560;
+  --color-prettylights-syntax-markup-changed-bg: #f4eee5;
+  --color-prettylights-syntax-markup-ignored-text: #948d82;
+  --color-prettylights-syntax-markup-ignored-bg: #f1ece3;
+  --color-prettylights-syntax-meta-diff-range: #6b675f;
+  --color-prettylights-syntax-brackethighlighter-angle: #948d82;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #b5aea2;
+  --color-prettylights-syntax-constant-other-reference-link: #697a7c;
+
+  /* 按钮 */
+  --color-btn-text: #3c3b37;
+  --color-btn-bg: #fbf9f5;
+  --color-btn-border: rgba(44, 44, 44, 0.2);
   --color-btn-shadow: 0 0 #0000;
   --color-btn-inset-shadow: 0 0 #0000;
-  --color-btn-hover-bg: #ededed;
-  --color-btn-hover-border: #a3a3a3;
-  --color-btn-active-bg: #e5e5e5;
-  --color-btn-active-border: #646464;
-  --color-btn-selected-bg: #ededed;
-  --color-btn-primary-text: #ffffff;
-  --color-btn-primary-bg: #db2777;
-  --color-btn-primary-border: #db2777;
+  --color-btn-hover-bg: #e9e3d9;
+  --color-btn-hover-border: #6b675f;
+  --color-btn-active-bg: #d9d0c3;
+  --color-btn-active-border: #3c3b37;
+  --color-btn-selected-bg: #e9e3d9;
+  --color-btn-primary-text: #f8f5f0;
+  --color-btn-primary-bg: #6b7b6e;
+  --color-btn-primary-border: #6b7b6e;
   --color-btn-primary-shadow: 0 0 #0000;
   --color-btn-primary-inset-shadow: 0 0 #0000;
-  --color-btn-primary-hover-bg: #be185d;
-  --color-btn-primary-hover-border: #be185d;
-  --color-btn-primary-selected-bg: #9d174d;
+  --color-btn-primary-hover-bg: #56665a;
+  --color-btn-primary-hover-border: #56665a;
+  --color-btn-primary-selected-bg: #4b5b4f;
   --color-btn-primary-selected-shadow: 0 0 #0000;
-  --color-btn-primary-disabled-text: #8a8a8a;
-  --color-btn-primary-disabled-bg: #e5e5e5;
-  --color-btn-primary-disabled-border: #e5e5e5;
+  --color-btn-primary-disabled-text: #948d82;
+  --color-btn-primary-disabled-bg: #e9e3d9;
+  --color-btn-primary-disabled-border: rgba(44, 44, 44, 0.12);
 
-  --color-action-list-item-default-hover-bg: #f6f6f6;
-  --color-segmented-control-bg: #f6f6f6;
-  --color-segmented-control-button-bg: #ffffff;
-  --color-segmented-control-button-selected-border: #646464;
+  /* 控件与卡片 */
+  --color-action-list-item-default-hover-bg: #f1ece3;
+  --color-segmented-control-bg: #f1ece3;
+  --color-segmented-control-button-bg: #fbf9f5;
+  --color-segmented-control-button-selected-border: #6b7b6e;
 
-  --color-fg-default: #111111;
-  --color-fg-muted: #646464;
-  --color-fg-subtle: #737373;
-  --color-canvas-default: #ffffff;
-  --color-canvas-overlay: #ffffff;
-  --color-canvas-inset: #ffffff;
-  --color-canvas-subtle: #f6f6f6;
-  --color-border-default: #e5e5e5;
-  --color-border-muted: #eeeeee;
-  --color-neutral-muted: #f2f2f2;
+  --color-fg-default: #3c3b37;
+  --color-fg-muted: #6b675f;
+  --color-fg-subtle: #948d82;
+  --color-fg-on-emphasis: #f8f5f0;
+  --color-canvas-default: #fbf9f5;
+  --color-canvas-overlay: #fbf9f5;
+  --color-canvas-inset: #f8f5f0;
+  --color-canvas-subtle: #f1ece3;
+  --color-border-default: rgba(44, 44, 44, 0.18);
+  --color-border-muted: rgba(44, 44, 44, 0.1);
+  --color-neutral-muted: rgba(44, 44, 44, 0.06);
+  --color-neutral-subtle: #f1ece3;
+  --color-neutral-emphasis: #948d82;
 
-  --color-accent-fg: #db2777;
-  --color-accent-emphasis: #db2777;
-  --color-accent-muted: #f3c6dd;
-  --color-accent-subtle: #fdf2f8;
-  --color-success-fg: #4d4d4d;
-  --color-attention-fg: #4d4d4d;
-  --color-attention-muted: #e5e5e5;
-  --color-attention-subtle: #f6f6f6;
-  --color-danger-fg: #111111;
-  --color-danger-muted: #e5e5e5;
-  --color-danger-subtle: #f6f6f6;
+  --color-accent-fg: #6b7b6e;
+  --color-accent-emphasis: #6b7b6e;
+  --color-accent-muted: #cfd7cf;
+  --color-accent-subtle: #eef1ec;
+  --color-success-fg: #56665a;
+  --color-attention-fg: #8a7560;
+  --color-attention-muted: #e5ddd2;
+  --color-attention-subtle: #f6f1e9;
+  --color-danger-fg: #9c5a4f;
+  --color-danger-muted: #e7d3cf;
+  --color-danger-subtle: #f7eeec;
 
   --color-primer-shadow-inset: 0 0 #0000;
-  --color-scale-gray-1: #f6f6f6;
-  --color-scale-blue-1: #ededed;
+  --color-scale-gray-1: #f1ece3;
+  --color-scale-blue-1: #e9e3d9;
 
-  --color-social-reaction-bg-hover: #f6f6f6;
-  --color-social-reaction-bg-reacted-hover: #ededed;
+  --color-social-reaction-bg-hover: #f1ece3;
+  --color-social-reaction-bg-reacted-hover: #e4ebe4;
 }
 
-main .pagination-loader-container {
-  background-image: none;
+main {
+  background-color: transparent;
+  color: var(--color-fg-default);
+  font-family: var(--gsc-font);
+  font-size: 15px;
+  line-height: 1.8;
 }
 
+main .btn,
+main button,
+main input,
+main textarea,
+main select,
+main .form-control {
+  font-family: var(--gsc-font);
+}
+
+/* 评论区标题与分隔线 */
+main .gsc-header {
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed var(--color-border-default);
+}
+
+main .gsc-comments-count {
+  color: var(--color-fg-default);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+main .gsc-comments-count + span,
+main .gsc-comment-replies-count,
+main .gsc-comment-box-markdown-hint {
+  color: var(--color-fg-subtle);
+}
+
+/* 去掉 GitHub 的圆角，贴近纸面排版 */
+main .gsc-comment-box,
+main .gsc-comment-box-tabs,
+main .gsc-comment-box-tabs button,
+main .gsc-comment-box-textarea,
+main .gsc-comment-box-textarea-extras,
+main .gsc-comment > .color-bg-primary,
+main .btn,
+main .gsc-social-reaction-summary-item,
+main .gsc-upvote-button {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+main .gsc-comment-box {
+  background-color: var(--color-canvas-default);
+  border-color: var(--color-border-default);
+}
+
+main .gsc-comment-box-tabs {
+  background-color: var(--color-canvas-subtle);
+}
+
+main .gsc-comment-box-textarea,
+main .gsc-comment-box-textarea-extras {
+  background-color: var(--color-canvas-default);
+  border-color: var(--color-border-default);
+}
+
+main .gsc-comment > .color-bg-primary {
+  background-color: var(--color-canvas-default) !important;
+  border-color: var(--color-border-default) !important;
+}
+
+/* Markdown 正文沿用博客的衬线字体和链接样式 */
+main .markdown-body {
+  color: var(--color-fg-default);
+  font-family: var(--gsc-font);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+main .markdown-body p {
+  margin: 0.85em 0;
+  letter-spacing: 0.02em;
+}
+
+main .markdown-body a {
+  color: var(--color-accent-fg);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+main .markdown-body blockquote {
+  padding: 0.7em 1em;
+  border-left: 3px solid var(--color-accent-emphasis);
+  border-radius: 0;
+  background-color: var(--color-canvas-subtle);
+  color: var(--color-fg-muted);
+}
+
+main .markdown-body code,
+main .markdown-body pre,
+main .markdown-body kbd,
+main .markdown-body samp {
+  font-family: var(--gsc-code-font);
+}
+
+main .markdown-body pre {
+  border-radius: 0;
+}
+
+main .gsc-reactions-count {
+  color: var(--color-fg-default);
+  font-size: 15px;
+}
+
+main .gsc-comment-box-textarea::placeholder {
+  color: var(--color-fg-subtle);
+}
+
+main .pagination-loader-container,
 main .gsc-loading-image {
   background-image: none;
 }
 
 .gsc-homepage-bg {
-  background-color: #ffffff;
+  background-color: transparent;
 }
