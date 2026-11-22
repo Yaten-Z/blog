@@ -26,7 +26,75 @@ const title = '友链'
       ))}
     </div>
   </div>
-  <Comment term="/friends" />
+
+  <section class="friend-apply" id="apply">
+    <h2 class="section-title">申请友链</h2>
+    <p class="section-description">
+      欢迎交换友链。提交前请先阅读申请条件，并在你的站点添加本站友链。
+    </p>
+
+    <ul class="apply-rules">
+      <li>原创内容为主，站点可正常访问，无违法违规内容。</li>
+      <li>有持续更新，内容与本站调性相近。</li>
+      <li>请先在您的站点添加本站友链。</li>
+      <li>申请时请提供：站点名称、链接、头像链接和一句话简介。</li>
+      <li>本站保留是否添加友链的决定权。</li>
+    </ul>
+
+    <div class="site-meta">
+      <p class="site-meta-title">本站信息</p>
+      <dl>
+        <div><dt>名称</dt><dd>Yaten's Blog</dd></div>
+        <div><dt>链接</dt><dd><a href="https://blog.yaten.top">https://blog.yaten.top</a></dd></div>
+        <div><dt>头像</dt><dd><a href="https://blog.yaten.top/avatar.jpg">https://blog.yaten.top/avatar.jpg</a></dd></div>
+        <div><dt>简介</dt><dd>记录代码、文字与生活。</dd></div>
+      </dl>
+    </div>
+
+    <form class="apply-form" novalidate>
+      <div class="form-grid">
+        <label class="form-field">
+          <span>站点名称 <em>*</em></span>
+          <input type="text" name="name" placeholder="例如：Yaten's Blog" autocomplete="off" />
+        </label>
+        <label class="form-field">
+          <span>站点链接 <em>*</em></span>
+          <input type="url" name="url" placeholder="https://example.com" autocomplete="off" />
+        </label>
+        <label class="form-field">
+          <span>头像链接</span>
+          <input type="url" name="avatar" placeholder="https://example.com/avatar.png" autocomplete="off" />
+        </label>
+        <label class="form-field">
+          <span>一句话简介</span>
+          <input type="text" name="description" placeholder="用一句话介绍你的站点" autocomplete="off" />
+        </label>
+      </div>
+
+      <label class="form-field">
+        <span>申请信息（可编辑）</span>
+        <textarea
+          name="message"
+          rows="8"
+          placeholder="填写上方信息后，这里会自动生成申请内容；也可以直接手动输入。"
+        ></textarea>
+      </label>
+
+      <div class="form-actions">
+        <button type="submit">复制并前往 Giscus 评论区</button>
+        <span class="form-status" role="status" aria-live="polite"></span>
+      </div>
+      <p class="form-hint">
+        复制成功后，请在下方 Giscus 评论区粘贴并提交。评论区需要使用 GitHub 账号登录。
+      </p>
+    </form>
+  </section>
+
+  <section class="friend-comments">
+    <h2 class="section-title">申请与留言</h2>
+    <p class="section-description">友链申请和留言都会显示在这里。</p>
+    <Comment term="/friends" />
+  </section>
 </Layout>
 
 <style>
@@ -139,4 +207,264 @@ const title = '友链'
     color: var(--text-content-color);
     line-height: 1.8;
   }
+
+  /* ---------- 友链申请 ---------- */
+  .friend-apply,
+  .friend-comments {
+    padding: 2rem 0;
+    border-top: 1px dashed var(--line-divider-color);
+  }
+
+  .section-title {
+    margin: 0 0 0.6rem;
+    color: var(--text-title-color);
+    font-size: var(--text-title-fontsize);
+    font-weight: var(--text-weight);
+  }
+
+  .section-description {
+    margin: 0 0 1.25rem;
+    color: var(--text-description-color);
+    font-size: var(--text-description-fontsize);
+    line-height: 1.8;
+  }
+
+  .apply-rules {
+    margin: 0 0 1.5rem;
+    padding-left: 1.25rem;
+    color: var(--text-content-color);
+    font-size: var(--text-description-fontsize);
+    line-height: 1.9;
+  }
+
+  .site-meta {
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--line-divider-color);
+    font-size: var(--text-description-fontsize);
+  }
+
+  .site-meta-title {
+    margin: 0 0 0.6rem;
+    color: var(--text-title-color);
+    font-weight: var(--text-weight);
+  }
+
+  .site-meta dl {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin: 0;
+  }
+
+  .site-meta dl > div {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .site-meta dt {
+    flex: none;
+    width: 2.4rem;
+    color: var(--text-faint-color);
+  }
+
+  .site-meta dd {
+    margin: 0;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .site-meta a {
+    color: var(--text-content-color);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .apply-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    color: var(--text-description-color);
+    font-size: var(--text-description-fontsize);
+  }
+
+  .form-field em {
+    color: var(--accent-color);
+    font-style: normal;
+  }
+
+  .form-field input,
+  .form-field textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.6rem 0.7rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--line-border-color);
+    border-radius: 0;
+    color: var(--text-content-color);
+    font-family: var(--font-family);
+    font-size: var(--text-description-fontsize);
+    line-height: 1.7;
+  }
+
+  .form-field textarea {
+    resize: vertical;
+    min-height: 8rem;
+  }
+
+  .form-field input:focus,
+  .form-field textarea:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 1px;
+  }
+
+  .form-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .form-actions button {
+    padding: 0.6rem 1rem;
+    background: var(--text-content-color);
+    border: 0;
+    color: var(--bg-color);
+    font-family: var(--font-family);
+    font-size: var(--text-description-fontsize);
+    cursor: pointer;
+  }
+
+  .form-actions button:hover {
+    background: var(--text-title-color);
+  }
+
+  .form-status {
+    color: var(--text-description-color);
+    font-size: var(--text-description-fontsize);
+  }
+
+  .form-status[data-state='success'] {
+    color: var(--accent-color);
+  }
+
+  .form-status[data-state='error'] {
+    color: #b42318;
+  }
+
+  .form-hint {
+    margin: 0;
+    color: var(--text-faint-color);
+    font-size: var(--text-description-fontsize);
+    line-height: 1.8;
+  }
+
+  @media (max-width: 640px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('.apply-form')
+
+  if (form) {
+    const field = (name: string) =>
+      form.elements.namedItem(name) as HTMLInputElement | HTMLTextAreaElement | null
+
+    const nameInput = field('name')
+    const urlInput = field('url')
+    const avatarInput = field('avatar')
+    const descriptionInput = field('description')
+    const messageInput = field('message') as HTMLTextAreaElement | null
+    const status = form.querySelector<HTMLElement>('.form-status')
+
+    const buildMessage = () => {
+      const name = nameInput?.value.trim() ?? ''
+      const url = urlInput?.value.trim() ?? ''
+      const avatar = avatarInput?.value.trim() ?? ''
+      const description = descriptionInput?.value.trim() ?? ''
+
+      return [
+        '### 友链申请',
+        '',
+        `- 名称：${name || '（未填写）'}`,
+        `- 链接：${url || '（未填写）'}`,
+        `- 头像：${avatar || '（未填写）'}`,
+        `- 简介：${description || '（未填写）'}`,
+      ].join('\n')
+    }
+
+    const syncMessage = () => {
+      if (messageInput) messageInput.value = buildMessage()
+    }
+
+    for (const input of [nameInput, urlInput, avatarInput, descriptionInput]) {
+      input?.addEventListener('input', syncMessage)
+    }
+
+    const copyText = async (text: string) => {
+      try {
+        await navigator.clipboard.writeText(text)
+        return true
+      } catch {
+        if (!messageInput) return false
+        messageInput.focus()
+        messageInput.select()
+        try {
+          return document.execCommand('copy')
+        } catch {
+          return false
+        }
+      }
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault()
+
+      const name = nameInput?.value.trim() ?? ''
+      const url = urlInput?.value.trim() ?? ''
+
+      if (!name || !url) {
+        if (status) {
+          status.textContent = '请至少填写站点名称和站点链接。'
+          status.dataset.state = 'error'
+        }
+        if (!name) nameInput?.focus()
+        else urlInput?.focus()
+        return
+      }
+
+      const message = messageInput?.value.trim() || buildMessage()
+      const copied = await copyText(message)
+
+      if (status) {
+        status.textContent = copied
+          ? '已复制，请在下方 Giscus 评论区粘贴并提交。'
+          : '复制失败，请手动选择上方文本复制。'
+        status.dataset.state = copied ? 'success' : 'error'
+      }
+
+      if (copied) {
+        document.querySelector('.friend-comments')?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        })
+      }
+    })
+  }
+</script>

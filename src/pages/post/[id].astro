@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Comment from "../../components/Comment.astro";
 import PostTOC from "../../components/PostTOC.astro";
+import Sponsor from "../../components/Sponsor.astro";
 import { getCollection, render } from "astro:content";
 import { POST_CONFIG } from "../../config";
 import "../../styles/markdown.css";
@@ -45,6 +46,7 @@ const commentTerm = `/blog/${post.data.id ?? post.id}`;
         </aside>
       )}
     </div>
+    <Sponsor compact />
     <Comment term={commentTerm} />
   </article>
 </Layout>

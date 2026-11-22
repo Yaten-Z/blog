@@ -1,0 +1,106 @@
+---
+import { SPONSOR_CONFIG } from '../config'
+
+interface Props {
+  compact?: boolean
+  showLink?: boolean
+}
+
+const { compact = false, showLink = true } = Astro.props
+---
+
+{
+  SPONSOR_CONFIG.enable && (
+    <section class:list={['sponsor-card', { compact }]}>
+      <div class="sponsor-copy">
+        <h2 class="sponsor-title">{SPONSOR_CONFIG.title}</h2>
+        <p class="sponsor-description">{SPONSOR_CONFIG.description}</p>
+        {
+          showLink && (
+            <a class="sponsor-link" href="/sponsor">
+              打开赞助页 →
+            </a>
+          )
+        }
+      </div>
+      <img
+        class="sponsor-qr"
+        src={SPONSOR_CONFIG.wechatQRCode}
+        alt="微信赞助二维码"
+        loading="lazy"
+      />
+    </section>
+  )
+}
+
+<style>
+  .sponsor-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 1.5rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--line-divider-color);
+  }
+
+  .sponsor-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    min-width: 0;
+  }
+
+  .sponsor-title {
+    margin: 0;
+    color: var(--text-title-color);
+    font-size: var(--text-content-fontsize);
+    font-weight: var(--text-weight);
+  }
+
+  .sponsor-description {
+    margin: 0;
+    color: var(--text-description-color);
+    font-size: var(--text-description-fontsize);
+    line-height: 1.8;
+  }
+
+  .sponsor-link {
+    width: fit-content;
+    color: var(--text-content-color);
+    font-size: var(--text-description-fontsize);
+    text-decoration: none;
+  }
+
+  .sponsor-link:hover {
+    background-color: var(--text-content-color);
+    color: var(--bg-color);
+  }
+
+  .sponsor-qr {
+    flex: none;
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    background: #fff;
+  }
+
+  .compact .sponsor-qr {
+    width: 112px;
+    height: 112px;
+  }
+
+  @media (max-width: 640px) {
+    .sponsor-card {
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.25rem;
+    }
+
+    .sponsor-qr,
+    .compact .sponsor-qr {
+      width: 96px;
+      height: 96px;
+    }
+  }
+</style>

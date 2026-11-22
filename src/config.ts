@@ -28,6 +28,7 @@ export const HEADER_CONFIG = {
     { label: '归档', href: '/archive' },
     { label: '分类', href: '/category' },
     { label: '动态', href: '/feed' },
+    { label: '赞助', href: '/sponsor' },
     { label: '友链', href: '/link' },
     { label: '关于', href: '/about' },
   ],
@@ -37,8 +38,17 @@ export const HEADER_CONFIG = {
 export const FOOTER_CONFIG = {
   link: [
     { name: 'GitHub', url: 'https://github.com/Yaten-Z' },
+    { name: '赞助', url: '/sponsor' },
     { name: 'RSS', url: '/rss.xml' },
   ]
+}
+
+// 赞助配置
+export const SPONSOR_CONFIG = {
+  enable: true,
+  title: '赞助',
+  description: '如果本站内容对你有帮助，欢迎扫码请我喝一杯咖啡。',
+  wechatQRCode: '/wechat-qr.jpg',
 }
 
 // 评论配置

@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro'
+import PageHeader from '../components/PageHeader.astro'
+import Sponsor from '../components/Sponsor.astro'
+
+const title = '赞助'
+---
+
+<Layout title={title}>
+  <PageHeader title={title} subtitle="感谢每一份支持。" />
+
+  <div class="sponsor-page">
+    <Sponsor showLink={false} />
+
+    <div class="sponsor-note">
+      <p>赞助完全自愿，不影响本站内容的正常更新与访问。</p>
+      <p>如果二维码无法识别，可以直接通过邮件联系我。</p>
+      <p>
+        邮箱：<a href="mailto:Yaten-Z@outlook.com">Yaten-Z@outlook.com</a>
+      </p>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .sponsor-page {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem 0 2rem;
+  }
+
+  .sponsor-note {
+    color: var(--text-description-color);
+    font-size: var(--text-description-fontsize);
+    line-height: 1.9;
+  }
+
+  .sponsor-note p {
+    margin: 0.35rem 0;
+  }
+
+  .sponsor-note a {
+    color: var(--text-content-color);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .sponsor-note a:hover {
+    background-color: var(--text-content-color);
+    color: var(--bg-color);
+  }
+</style>
