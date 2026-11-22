@@ -89,7 +89,11 @@ const serverURL = COMMENT_CONFIG.waline.serverURL;
 
         const config = COMMENT_CONFIG.giscus;
 
-        const themeUrl = (file: string) => new URL(`/${file}`, window.location.origin).href;
+        const themeUrl = (file: string) => {
+          const url = new URL(`/${file}`, window.location.origin);
+          url.searchParams.set('v', config.themeVersion);
+          return url.href;
+        };
         const currentTheme = () =>
           document.documentElement.dataset.theme === 'dark'
             ? themeUrl('giscus-dark.css')

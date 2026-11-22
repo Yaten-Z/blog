@@ -71,5 +71,7 @@ export const COMMENT_CONFIG = {
     emitMetadata: '0',
     inputPosition: 'bottom',
     lang: 'zh-CN',
+    // 修改 giscus-light.css / giscus-dark.css 后递增，用于强制刷新 iframe 主题缓存
+    themeVersion: '2026-11-22-1',
   },
 }
