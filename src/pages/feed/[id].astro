@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import Comment from '../../components/Comment.astro'
 import { getCollection, render } from 'astro:content'
 import '../../styles/markdown.css'
 
@@ -59,6 +60,8 @@ const title = `动态 ${dateOf(entry.data.date)}`
         <span />
       )}
     </nav>
+
+    <Comment term={`/feed/${entry.id}`} />
   </article>
 </Layout>
 

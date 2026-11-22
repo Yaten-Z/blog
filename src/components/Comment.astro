@@ -2,10 +2,16 @@
 import { COMMENT_CONFIG } from '../config';
 import '../styles/waline.css';
 
+interface Props {
+  // 用于 giscus 的 specific 映射，默认使用当前页面路径
+  term?: string;
+}
+
+const { term = Astro.url.pathname } = Astro.props;
 const serverURL = COMMENT_CONFIG.waline.serverURL;
 ---
 
-{COMMENT_CONFIG.enable && (
+{COMMENT_CONFIG.enable && COMMENT_CONFIG.provider === 'waline' && (
   <>
     <section class="comment">
       <div id="waline" class="waline-container" data-server-url={serverURL}></div>
@@ -68,6 +74,74 @@ const serverURL = COMMENT_CONFIG.waline.serverURL;
   })();
     </script>
   </>
+)}
+
+{COMMENT_CONFIG.enable && COMMENT_CONFIG.provider === 'giscus' && (
+  <section class="comment">
+    <div class="giscus" data-term={term}></div>
+
+    <script>
+      import { COMMENT_CONFIG } from '../config';
+
+      function initGiscus() {
+        const container = document.querySelector<HTMLElement>('.giscus');
+        if (!container) return;
+
+        const config = COMMENT_CONFIG.giscus;
+
+        const themeUrl = (file: string) => new URL(`/${file}`, window.location.origin).href;
+        const currentTheme = () =>
+          document.documentElement.dataset.theme === 'dark'
+            ? themeUrl('giscus-dark.css')
+            : themeUrl('giscus-light.css');
+
+        const attributes: Record<string, string> = {
+          'data-repo': config.repo,
+          'data-repo-id': config.repoId,
+          'data-category': config.category,
+          'data-category-id': config.categoryId,
+          'data-mapping': config.mapping,
+          'data-term': container.dataset.term ?? window.location.pathname,
+          'data-strict': config.strict,
+          'data-reactions-enabled': config.reactionsEnabled,
+          'data-emit-metadata': config.emitMetadata,
+          'data-input-position': config.inputPosition,
+          'data-lang': config.lang,
+        };
+
+        // 主题切换时通知 giscus 的 iframe 重新加载对应配色
+        function updateTheme() {
+          const iframe = document.querySelector<HTMLIFrameElement>('iframe.giscus-frame');
+          if (!iframe?.contentWindow) return;
+          iframe.contentWindow.postMessage(
+            { giscus: { setConfig: { theme: currentTheme() } } },
+            'https://giscus.app',
+          );
+        }
+
+        new MutationObserver(updateTheme).observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ['data-theme'],
+        });
+
+        const script = document.createElement('script');
+        script.src = 'https://giscus.app/client.js';
+        script.async = true;
+        script.crossOrigin = 'anonymous';
+        for (const [key, value] of Object.entries(attributes)) {
+          script.setAttribute(key, value);
+        }
+        script.setAttribute('data-theme', currentTheme());
+        container.appendChild(script);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initGiscus);
+      } else {
+        initGiscus();
+      }
+    </script>
+  </section>
 )}
 
 <style>

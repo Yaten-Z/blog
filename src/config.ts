@@ -42,10 +42,24 @@ export const FOOTER_CONFIG = {
 }
 
 // 评论配置
+export type CommentProvider = 'waline' | 'giscus'
+
 export const COMMENT_CONFIG = {
-  enable: false,
-  provider: 'waline',
+  enable: true,
+  provider: 'giscus' as CommentProvider,
   waline: {
     serverURL: 'https://example.cn/',
+  },
+  giscus: {
+    repo: 'Yaten-Z/blog-giscus',
+    repoId: 'R_kgDOOzg2eg',
+    category: 'General',
+    categoryId: 'DIC_kwDOOzg2es4Cq1Mp',
+    mapping: 'specific',
+    strict: '0',
+    reactionsEnabled: '1',
+    emitMetadata: '0',
+    inputPosition: 'bottom',
+    lang: 'zh-CN',
   },
 }
