@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro'
+import PageHeader from '../components/PageHeader.astro'
+import { getCollection, render } from 'astro:content'
+import '../styles/markdown.css'
+
+const entries = (await getCollection('feed'))
+  .filter(entry => !entry.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+
+const items = await Promise.all(
+  entries.map(async entry => ({
+    entry,
+    Content: (await render(entry)).Content,
+  })),
+)
+
+const dateOf = (date: Date) => date.toISOString().slice(0, 10).replaceAll('-', '.')
+
+const title = '动态'
+---
+
+<Layout title={title}>
+  <PageHeader title={title} subtitle="短记录、碎片与随手拍。" />
+
+  <div class="feed">
+    {items.map(({ entry, Content }) => (
+      <article class="feed-item">
+        <a class="feed-date" href={`/feed/${entry.id}`}>
+          <time datetime={entry.data.date.toISOString()}>{dateOf(entry.data.date)}</time>
+        </a>
+        <div class="feed-body markdown-body">
+          <Content />
+        </div>
+        <a class="feed-permalink hover-underline" href={`/feed/${entry.id}`}>查看详情 →</a>
+      </article>
+    ))}
+  </div>
+</Layout>
+
+<style>
+  .feed {
+    padding: 1rem 0 2rem;
+  }
+
+  .feed-item {
+    padding: 1.75rem 0;
+    border-bottom: 1px dashed var(--line-divider-color);
+  }
+
+  .feed-item:first-child {
+    padding-top: 0;
+  }
+
+  .feed-date {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    color: var(--text-description-color);
+    font-size: var(--text-description-fontsize);
+    font-variant-numeric: tabular-nums;
+    text-decoration: none;
+  }
+
+  .feed-date:hover {
+    color: var(--text-title-color);
+  }
+
+  .feed-body {
+    color: var(--text-content-color);
+    font-size: var(--text-content-fontsize);
+    line-height: 1.8;
+  }
+
+  .feed-permalink {
+    display: inline-block;
+    margin-top: 0.75rem;
+    color: var(--text-description-color);
+    font-size: var(--text-description-fontsize);
+    text-decoration: none;
+  }
+</style>

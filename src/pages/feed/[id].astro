@@ -1,0 +1,123 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { getCollection, render } from 'astro:content'
+import '../../styles/markdown.css'
+
+export async function getStaticPaths() {
+  const entries = await getCollection('feed')
+  return entries
+    .filter(entry => !entry.data.draft)
+    .map(entry => ({
+      params: { id: entry.id },
+      props: { entry },
+    }))
+}
+
+const { entry } = Astro.props
+const { Content } = await render(entry)
+
+const entries = (await getCollection('feed'))
+  .filter(item => !item.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+
+const index = entries.findIndex(item => item.id === entry.id)
+const newer = index > 0 ? entries[index - 1] : undefined
+const older = index >= 0 && index < entries.length - 1 ? entries[index + 1] : undefined
+
+const dateOf = (date: Date) => date.toISOString().slice(0, 10).replaceAll('-', '.')
+const title = `动态 ${dateOf(entry.data.date)}`
+---
+
+<Layout title={title}>
+  <article class="feed-post">
+    <header class="feed-header">
+      <a class="feed-back hover-underline" href="/feed">← 返回动态</a>
+      <time class="feed-date" datetime={entry.data.date.toISOString()}>
+        {dateOf(entry.data.date)}
+      </time>
+    </header>
+
+    <div class="feed-body markdown-body">
+      <Content />
+    </div>
+
+    <nav class="feed-nav">
+      {newer ? (
+        <a class="feed-nav-link" href={`/feed/${newer.id}`}>
+          ← 上一条
+          <span class="feed-nav-date">{dateOf(newer.data.date)}</span>
+        </a>
+      ) : (
+        <span />
+      )}
+      {older ? (
+        <a class="feed-nav-link feed-nav-next" href={`/feed/${older.id}`}>
+          下一条 →
+          <span class="feed-nav-date">{dateOf(older.data.date)}</span>
+        </a>
+      ) : (
+        <span />
+      )}
+    </nav>
+  </article>
+</Layout>
+
+<style>
+  .feed-post {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 0;
+  }
+
+  .feed-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .feed-back {
+    color: var(--text-description-color);
+    font-size: var(--text-description-fontsize);
+    text-decoration: none;
+  }
+
+  .feed-date {
+    color: var(--text-title-color);
+    font-size: var(--text-logo-fontsize);
+    font-weight: var(--text-weight);
+    line-height: 1.4;
+  }
+
+  .feed-body {
+    color: var(--text-content-color);
+    font-size: calc(var(--text-content-fontsize) + 1px);
+    line-height: 1.8;
+  }
+
+  .feed-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line-divider-color);
+  }
+
+  .feed-nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: var(--text-content-color);
+    font-size: var(--text-description-fontsize);
+    text-decoration: none;
+  }
+
+  .feed-nav-next {
+    text-align: right;
+  }
+
+  .feed-nav-date {
+    color: var(--text-faint-color);
+    font-variant-numeric: tabular-nums;
+  }
+</style>
