@@ -1,9 +1,7 @@
 ---
 title: 用春天来回答
 published: 2026-09-19
-description: 我的枕头是麦穗做的，砸进去的眼泪，迟早会在早春发芽。
-category: poem
-tags: [poem, 诗歌]
+type: 诗歌
 ---
 
 我的枕头是麦穗做的\

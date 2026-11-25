@@ -17,6 +17,16 @@ const posts = defineCollection({
   }),
 });
 
+const essays = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/essays' }),
+  schema: z.object({
+    title: z.string(),
+    type: z.string(),
+    published: z.coerce.date(),
+    id: z.string().optional(),
+  }),
+});
+
 const feed = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/feed' }),
   schema: z.object({
@@ -25,5 +35,5 @@ const feed = defineCollection({
   }),
 });
 
-export const collections = { posts, feed };
+export const collections = { posts, essays, feed };
 

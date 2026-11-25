@@ -1,9 +1,7 @@
 ---
 title: 故乡
 published: 2024-09-24
-description: 故乡住不下我轻狂的肉身，他乡容不下我破碎的灵魂。我们用尽一切力气奔赴远方，却用了余生的时间还乡。
-category: essay
-tags: [essay, 随笔]
+type: 散文
 ---
 
 什么是故乡?

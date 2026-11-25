@@ -1,0 +1,87 @@
+---
+import Layout from '../layouts/Layout.astro'
+import PageHeader from '../components/PageHeader.astro'
+import { getCollection } from 'astro:content'
+
+const entries = (await getCollection('essays'))
+  .sort((a, b) => b.data.published.getTime() - a.data.published.getTime())
+
+const dateOf = (date: Date) => date.toISOString().slice(0, 10).replaceAll('-', '.')
+const title = '随笔'
+---
+
+<Layout title={title}>
+  <PageHeader title={title} subtitle="诗歌、散文，以及一些碎碎念。" />
+
+  <ul class="essay-list">
+    {entries.map(entry => (
+      <li class="essay-item">
+        <time class="essay-published" datetime={entry.data.published.toISOString()}>
+          {dateOf(entry.data.published)}
+        </time>
+        <a
+          href={`/essays/${entry.data.id ?? entry.id}`}
+          class="essay-title hover-underline"
+        >
+          <span class="essay-type">{entry.data.type}</span>
+          <span class="essay-divider">|</span>
+          {entry.data.title}
+        </a>
+      </li>
+    ))}
+  </ul>
+</Layout>
+
+<style>
+  .essay-list {
+    list-style: none;
+    margin: 0;
+    padding: 1rem 0 2rem;
+  }
+
+  .essay-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: .75rem 0;
+  }
+
+  .essay-item:first-child {
+    padding-top: 0;
+  }
+
+  .essay-published {
+    font-size: var(--text-description-fontsize);
+    color: var(--text-description-color);
+    font-family: Consolas, "Noto serif SC", serif;
+    flex-shrink: 0;
+    min-width: 4rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .essay-title {
+    display: inline-flex;
+    align-items: baseline;
+    gap: .4rem;
+    color: var(--text-logo-color);
+    font-size: var(--text-content-fontsize);
+    text-decoration: none;
+  }
+
+  .essay-type {
+    color: var(--text-description-color);
+    font-size: var(--text-description-fontsize);
+  }
+
+  .essay-divider {
+    color: var(--text-faint-color);
+  }
+
+  @media (max-width: 768px) {
+    .essay-item {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 4px;
+    }
+  }
+</style>

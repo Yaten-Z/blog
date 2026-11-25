@@ -1,9 +1,7 @@
 ---
 title: 清醒与糊涂
 published: 2026-11-22
-description: 清醒是痛苦的，糊涂是轻松的。可人生从来不是一道非此即彼的选择题，答案也不一定非要写在答题卡上。
-category: essay
-tags: [essay, 随笔]
+type: 碎碎念
 ---
 
 “你一定要活得清醒吗？”  

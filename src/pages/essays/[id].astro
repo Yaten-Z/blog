@@ -1,0 +1,148 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Comment from '../../components/Comment.astro'
+import Sponsor from '../../components/Sponsor.astro'
+import { getCollection, render } from 'astro:content'
+import '../../styles/markdown.css'
+
+export async function getStaticPaths() {
+  const entries = await getCollection('essays')
+  return entries.map(entry => ({
+    params: { id: entry.data.id ?? entry.id },
+    props: { entry },
+  }))
+}
+
+const { entry } = Astro.props
+const { Content } = await render(entry)
+
+const entries = (await getCollection('essays'))
+  .sort((a, b) => b.data.published.getTime() - a.data.published.getTime())
+
+const index = entries.findIndex(item => item.id === entry.id)
+const newer = index > 0 ? entries[index - 1] : undefined
+const older = index >= 0 && index < entries.length - 1 ? entries[index + 1] : undefined
+
+const dateOf = (date: Date) => date.toISOString().slice(0, 10).replaceAll('-', '.')
+const title = entry.data.title
+// 沿用迁移前文章的 giscus 讨论串
+const commentTerm = `/blog/${entry.data.id ?? entry.id}`
+
+const hrefOf = (item: typeof entry) => `/essays/${item.data.id ?? item.id}`
+---
+
+<Layout title={title}>
+  <article class="essay-post">
+    <header class="essay-header">
+      <a class="essay-back hover-underline" href="/essays">← 返回随笔</a>
+      <div class="essay-meta">
+        <span class="essay-type">{entry.data.type}</span>
+        <time datetime={entry.data.published.toISOString()}>{dateOf(entry.data.published)}</time>
+      </div>
+      <h1 class="essay-title">{entry.data.title}</h1>
+    </header>
+
+    <div class="essay-body markdown-body">
+      <Content />
+    </div>
+
+    <nav class="essay-nav">
+      {newer ? (
+        <a class="essay-nav-link" href={hrefOf(newer)}>
+          ← 上一条
+          <span class="essay-nav-title">{newer.data.title}</span>
+        </a>
+      ) : (
+        <span />
+      )}
+      {older ? (
+        <a class="essay-nav-link essay-nav-next" href={hrefOf(older)}>
+          下一条 →
+          <span class="essay-nav-title">{older.data.title}</span>
+        </a>
+      ) : (
+        <span />
+      )}
+    </nav>
+
+    <Sponsor compact />
+    <Comment term={commentTerm} />
+  </article>
+</Layout>
+
+<style>
+  .essay-post {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 0;
+  }
+
+  .essay-header {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+  }
+
+  .essay-back {
+    color: var(--text-description-color);
+    font-size: var(--text-description-fontsize);
+    text-decoration: none;
+  }
+
+  .essay-meta {
+    display: flex;
+    align-items: baseline;
+    gap: .75rem;
+    color: var(--text-description-color);
+    font-size: var(--text-description-fontsize);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .essay-type {
+    padding: .1em .5em;
+    border: 1px solid var(--line-divider-color);
+    color: var(--text-content-color);
+    font-size: .85em;
+    line-height: 1.6;
+  }
+
+  .essay-title {
+    margin: 0;
+    color: var(--text-title-color);
+    font-size: var(--text-logo-fontsize);
+    font-weight: var(--text-weight);
+    line-height: 1.4;
+  }
+
+  .essay-body {
+    color: var(--text-content-color);
+    font-size: calc(var(--text-content-fontsize) + 1px);
+    line-height: 1.8;
+  }
+
+  .essay-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line-divider-color);
+  }
+
+  .essay-nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: var(--text-content-color);
+    font-size: var(--text-description-fontsize);
+    text-decoration: none;
+  }
+
+  .essay-nav-next {
+    text-align: right;
+  }
+
+  .essay-nav-title {
+    color: var(--text-faint-color);
+  }
+</style>

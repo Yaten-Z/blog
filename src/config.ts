@@ -27,6 +27,7 @@ export const HEADER_CONFIG = {
   nav: [
     { label: '归档', href: '/archive' },
     { label: '分类', href: '/category' },
+    { label: '随笔', href: '/essays' },
     { label: '动态', href: '/feed' },
     { label: '赞助', href: '/sponsor' },
     { label: '友链', href: '/link' },

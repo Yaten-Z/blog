@@ -1,9 +1,7 @@
 ---
 title: 人生长恨水长东
 published: 2026-09-20
-description: 水总是向东流，它真正像的是时间。关于告别、失去与遗憾的一点随想。
-category: essay
-tags: [essay, 随笔]
+type: 散文
 ---
 
 “自是人生长恨水长东。”

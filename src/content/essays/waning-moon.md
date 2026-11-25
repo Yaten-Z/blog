@@ -1,9 +1,7 @@
 ---
 title: 残月
 published: 2026-10-11
-description: 夜色沉入江底，唯有一轮残月，在天亮以前，独自饮尽了整片苍凉。
-category: poem
-tags: [poem, 诗歌]
+type: 诗歌
 ---
 
 夜色沉入江底\

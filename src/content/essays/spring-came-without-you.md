@@ -1,9 +1,7 @@
 ---
 title: 见春天，不见故人
 published: 2026-09-30
-description: 远到再也看不见，远到再也听不见一句回应——山还是那座山，雨还是那场雨，见春天，不见故人。
-category: poem
-tags: [poem, 诗歌]
+type: 诗歌
 ---
 
 远到再也看不见，\
