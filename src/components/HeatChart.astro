@@ -1,11 +1,21 @@
 ---
 import { getCollection } from 'astro:content'
 
-const posts = await getCollection('posts')
+const [posts, essays, feed] = await Promise.all([
+  getCollection('posts'),
+  getCollection('essays'),
+  getCollection('feed'),
+])
 const counts = new Map<string, number>()
 
-for (const post of posts) {
-  const key = post.data.published.toISOString().slice(0, 10)
+const dates = [
+  ...posts.map(post => post.data.published),
+  ...essays.map(entry => entry.data.published),
+  ...feed.filter(entry => !entry.data.draft).map(entry => entry.data.date),
+]
+
+for (const date of dates) {
+  const key = date.toISOString().slice(0, 10)
   counts.set(key, (counts.get(key) || 0) + 1)
 }
 
