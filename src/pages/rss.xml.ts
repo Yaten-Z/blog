@@ -34,7 +34,7 @@ export async function GET(context) {
     ...essays.map(essay => ({
       title: essay.data.title,
       pubDate: essay.data.published,
-      description: excerptOf(essay.body),
+      description: essay.data.description ?? excerptOf(essay.body),
       link: `/essays/${essay.data.id ?? essay.id}/`,
     })),
   ].sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());

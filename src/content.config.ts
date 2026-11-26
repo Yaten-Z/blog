@@ -21,6 +21,7 @@ const essays = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/essays' }),
   schema: z.object({
     title: z.string(),
+    description: z.string().optional(),
     type: z.string(),
     published: z.coerce.date(),
     id: z.string().optional(),
