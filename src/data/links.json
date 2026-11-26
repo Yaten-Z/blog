@@ -58,5 +58,11 @@
     "description": "天空就是一杯橘子味的柠檬汽水",
     "url": "https://blog.lemonstar.me",
     "avatar": "https://blog.lemonstar.me/img/site-icon-lemon.png"
+  },
+  {
+    "name": "BlogsClub",
+    "description": "个人博客俱乐部",
+    "url": "https://www.blogsclub.org/",
+    "avatar": "https://s1.imagehub.cc/images/2026/11/26/78bf978089966a1ef43399622f96070c.jpg"
   }
 ]
