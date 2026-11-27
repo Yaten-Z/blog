@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro'
 import PageHeader from '../components/PageHeader.astro'
 import { getCollection } from 'astro:content'
+import { formatDateTime } from '../utils/date'
 const allPosts = await getCollection('posts')
 const posts = allPosts.sort((a, b) => {
   return new Date(b.data.published).getTime() - new Date(a.data.published).getTime()
@@ -15,7 +16,7 @@ const title = '归档'
   <ul class="archive">
     {posts.map(post => (
       <li class="archive-item">
-        <span class="archive-published">{post.data.published.toISOString().split('T')[0]}</span>
+        <time class="archive-published" datetime={post.data.published.toISOString()}>{formatDateTime(post.data.published)}</time>
         <a href={`/post/${post.data.id ?? post.id}`} class="archive-title hover-underline">{post.data.title}</a>
       </li>
     ))}
@@ -50,7 +51,8 @@ const title = '归档'
     color: var(--text-description-color);
     font-family: Consolas, "Noto serif SC", serif;
     flex-shrink: 0;
-    min-width: 4rem;
+    min-width: 10rem;
+    font-variant-numeric: tabular-nums;
   }
 
   .archive-title {

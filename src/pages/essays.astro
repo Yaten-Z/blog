@@ -2,11 +2,12 @@
 import Layout from '../layouts/Layout.astro'
 import PageHeader from '../components/PageHeader.astro'
 import { getCollection } from 'astro:content'
+import { formatDateTime } from '../utils/date'
 
 const entries = (await getCollection('essays'))
   .sort((a, b) => b.data.published.getTime() - a.data.published.getTime())
 
-const dateOf = (date: Date) => date.toISOString().slice(0, 10).replaceAll('-', '.')
+const dateOf = formatDateTime
 const title = '随笔'
 ---
 
@@ -55,7 +56,7 @@ const title = '随笔'
     color: var(--text-description-color);
     font-family: Consolas, "Noto serif SC", serif;
     flex-shrink: 0;
-    min-width: 4rem;
+    min-width: 10rem;
     font-variant-numeric: tabular-nums;
   }
 

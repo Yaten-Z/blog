@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import { getCollection } from 'astro:content'
+import { formatDateTime } from '../../utils/date'
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts')
@@ -24,7 +25,7 @@ const title = `分类：${name}`
   <ul class="post-list">
     {posts.map(post => (
       <li class="post-list-item">
-        <span class="post-list-published">{post.data.published.toISOString().split('T')[0]}</span>
+        <time class="post-list-published" datetime={post.data.published.toISOString()}>{formatDateTime(post.data.published)}</time>
         <a href={`/post/${post.data.id ?? post.id}`} class="post-list-title hover-underline">{post.data.title}</a>
       </li>
     ))}
@@ -50,7 +51,8 @@ const title = `分类：${name}`
     color: var(--text-description-color);
     font-family: Consolas, "Noto serif SC", serif;
     flex-shrink: 0;
-    min-width: 4rem;
+    min-width: 10rem;
+    font-variant-numeric: tabular-nums;
   }
 
   .post-list-title {

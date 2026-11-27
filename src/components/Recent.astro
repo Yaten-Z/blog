@@ -1,4 +1,6 @@
 ---
+import { formatDateTime } from '../utils/date'
+
 interface Props {
   posts: {
     id: string
@@ -15,7 +17,7 @@ const { posts } = Astro.props
 
 type Post = Props['posts'][number]
 
-const dateOf = (post: Post) => post.data.published.toISOString().slice(0, 10).replaceAll('-', '.')
+const dateOf = (post: Post) => formatDateTime(post.data.published)
 const isoOf = (post: Post) => post.data.published.toISOString()
 const hrefOf = (post: Post) => `/post/${post.data.id ?? post.id}`
 ---

@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content'
+import { dateKey, todayInBeijing } from '../utils/date'
 
 const [posts, essays, feed] = await Promise.all([
   getCollection('posts'),
@@ -9,7 +10,7 @@ const [posts, essays, feed] = await Promise.all([
 const counts = new Map<string, { posts: number; essays: number; feed: number }>()
 
 const add = (date: Date, kind: 'posts' | 'essays' | 'feed') => {
-  const key = date.toISOString().slice(0, 10)
+  const key = dateKey(date)
   const entry = counts.get(key) ?? { posts: 0, essays: 0, feed: 0 }
   entry[kind] += 1
   counts.set(key, entry)
@@ -20,8 +21,7 @@ essays.forEach(entry => add(entry.data.published, 'essays'))
 feed.filter(entry => !entry.data.draft).forEach(entry => add(entry.data.date, 'feed'))
 
 const buildWeeks = (weeks: number) => {
-  const today = new Date()
-  const end = new Date(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()))
+  const end = todayInBeijing()
   const start = new Date(end)
   start.setUTCDate(end.getUTCDate() - end.getUTCDay() - (weeks - 1) * 7)
 

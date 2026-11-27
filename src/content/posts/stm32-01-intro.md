@@ -1,6 +1,6 @@
 ---
 title: "STM32 入门（01）：认识 STM32"
-published: 2026-10-04
+published: 2026-10-04 00:00
 description: 从单片机是什么讲起，对比 51 与 STM32，拆解 STM32 命名规则，并介绍本系列使用的开发板与工具链。
 category: stm32
 tags: [STM32, 嵌入式, 单片机]

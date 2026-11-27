@@ -1,7 +1,7 @@
 ---
 title: 残月
 description: 夜色、残月与冷雨交织，写尽独饮苍凉、故土难归的孤寂。
-published: 2026-10-11
+published: 2026-10-11 00:00
 type: 诗歌
 ---
 

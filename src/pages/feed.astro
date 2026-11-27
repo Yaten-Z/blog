@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro'
 import PageHeader from '../components/PageHeader.astro'
 import { getCollection, render } from 'astro:content'
+import { formatDateTime } from '../utils/date'
 import '../styles/markdown.css'
 
 const entries = (await getCollection('feed'))
@@ -15,7 +16,7 @@ const items = await Promise.all(
   })),
 )
 
-const dateOf = (date: Date) => date.toISOString().slice(0, 10).replaceAll('-', '.')
+const dateOf = formatDateTime
 
 const title = '动态'
 ---

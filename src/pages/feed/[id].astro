@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 import Comment from '../../components/Comment.astro'
 import { getCollection, render } from 'astro:content'
+import { formatDateTime } from '../../utils/date'
 import '../../styles/markdown.css'
 
 export async function getStaticPaths() {
@@ -25,7 +26,7 @@ const index = entries.findIndex(item => item.id === entry.id)
 const newer = index > 0 ? entries[index - 1] : undefined
 const older = index >= 0 && index < entries.length - 1 ? entries[index + 1] : undefined
 
-const dateOf = (date: Date) => date.toISOString().slice(0, 10).replaceAll('-', '.')
+const dateOf = formatDateTime
 const title = `动态 ${dateOf(entry.data.date)}`
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "STM32 入门（03）：GPIO 输入输出"
-published: 2026-11-18
+published: 2026-11-18 00:00
 description: 从引脚内部结构讲起，逐个拆解 GPIO 的八种工作模式、CRL/CRH 寄存器编码、上拉下拉与推挽开漏，再用按键实验讲透消抖、边沿检测和状态机。
 category: stm32
 tags: [STM32, 嵌入式, HAL, GPIO, CubeMX]

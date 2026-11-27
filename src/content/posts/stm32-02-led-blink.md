@@ -1,6 +1,6 @@
 ---
 title: "STM32 入门（02）：第一个工程——点亮 LED"
-published: 2026-10-04
+published: 2026-10-04 00:00
 description: 用 STM32CubeMX 新建工程、配置时钟与 GPIO，生成 Keil 工程，写几行 HAL 代码点亮蓝丸板载 LED 和外接 LED。
 category: stm32
 tags: [STM32, 嵌入式, HAL, GPIO, Keil]
